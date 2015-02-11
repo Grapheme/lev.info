@@ -1,0 +1,26 @@
+.us-input {
+	border: 1px solid #cdcdcd;
+	border-radius: 5px;
+	outline: none;
+	padding: 0 15px;
+	height: 33px;
+	font-size: 14px;
+
+	&:hover, &:focus {
+		border: 1px solid #b1b1b1;
+		box-shadow: inset 1px 1px 3px 0px rgba(0,0,0,.1);
+	}
+}
+
+.h1-cont {
+	background: #f7f7f7;
+	padding: 35px 0;
+
+	h1 {
+		font-size: 34px;
+		font-weight: 100;
+		text-transform: uppercase;
+		letter-spacing: 4px;
+		margin: 0;
+	}
+}

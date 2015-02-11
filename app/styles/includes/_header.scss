@@ -1,0 +1,119 @@
+.main-header {
+  position: relative;
+  padding: 35px 0 30px;
+
+  .person-info {
+    width: 300px;
+    min-height: 90px;
+
+    .person-title {
+      font-size: 24px;
+      font-weight: 500;
+    }
+    .person-desc {
+      font-size: 15px;
+      line-height: 1.4;
+      margin-top: 5px;
+    }
+  }
+
+  .main-nav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+
+    .nav-ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      .nav-item {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 20px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        a {
+          color: #222;
+          text-decoration: none;
+          font-size: 15px;
+          font-weight: 500;
+          transition: color .2s ease;
+
+          &:hover {
+            color: #fbaf00;
+          }
+        }
+      }
+    }
+  }
+
+  .search-block {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .seach-cont {
+      position: relative;
+    }
+
+    .search-input {
+      box-sizing: border-box;
+      width: 225px;
+      padding-right: 40px;
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 40px;
+      line-height: 42px;
+      border: none;
+      outline: none;
+      background: transparent;
+
+      &:before {
+        @extend .fi;
+        content: "\e607";
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+.main-header {
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 5px;
+
+    background: #ffc801; /* Old browsers */
+    background: -moz-linear-gradient(left,  #ffc801 0%, #fec901 6%, #ffc600 6%, #ffc701 6%, #fbcb00 6%, #fee101 6%, #ffee02 6%, #feef00 6%, #ffed00 22%, #faf100 22%, #ffee00 22%, #ffef01 22%, #e42021 22%, #e42021 26%, #e22221 26%, #e6201f 26%, #93617e 26%, #004e99 26%, #024ca1 26%, #004f98 26%, #014e9e 26%, #014e9c 32%, #edb335 32%, #ffae02 32%, #ffb000 32%, #ffad05 32%, #fcb100 32%, #ffae00 32%, #ffaf00 48%, #ffc50a 48%, #ffe701 48%, #fce702 48%, #ffe402 48%, #fee700 48%, #fee504 49%, #ffe500 49%, #fce700 49%, #ffe500 51%, #fee800 51%, #ffe404 51%, #ffe700 52%, #ffe400 52%, #fee703 52%, #f26748 52%, #e42021 52%, #e3211f 58%, #e42022 58%, #e3211f 58%, #ffee00 58%, #ffee00 74%, #ffec00 74%, #82af6e 74%, #004d9f 74%, #014f9a 74%, #004e9d 74%, #014f9a 78%, #014ea0 78%, #e2221f 78%, #e42021 78%, #e42021 83%, #e6201f 83%, #e12325 83%, #e4211f 83%, #e22221 84%, #e4211f 84%, #fe843b 84%, #ffaf00 84%, #ffaf00 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ffc801), color-stop(6%,#fec901), color-stop(6%,#ffc600), color-stop(6%,#ffc701), color-stop(6%,#fbcb00), color-stop(6%,#fee101), color-stop(6%,#ffee02), color-stop(6%,#feef00), color-stop(22%,#ffed00), color-stop(22%,#faf100), color-stop(22%,#ffee00), color-stop(22%,#ffef01), color-stop(22%,#e42021), color-stop(26%,#e42021), color-stop(26%,#e22221), color-stop(26%,#e6201f), color-stop(26%,#93617e), color-stop(26%,#004e99), color-stop(26%,#024ca1), color-stop(26%,#004f98), color-stop(26%,#014e9e), color-stop(32%,#014e9c), color-stop(32%,#edb335), color-stop(32%,#ffae02), color-stop(32%,#ffb000), color-stop(32%,#ffad05), color-stop(32%,#fcb100), color-stop(32%,#ffae00), color-stop(48%,#ffaf00), color-stop(48%,#ffc50a), color-stop(48%,#ffe701), color-stop(48%,#fce702), color-stop(48%,#ffe402), color-stop(48%,#fee700), color-stop(49%,#fee504), color-stop(49%,#ffe500), color-stop(49%,#fce700), color-stop(51%,#ffe500), color-stop(51%,#fee800), color-stop(51%,#ffe404), color-stop(52%,#ffe700), color-stop(52%,#ffe400), color-stop(52%,#fee703), color-stop(52%,#f26748), color-stop(52%,#e42021), color-stop(58%,#e3211f), color-stop(58%,#e42022), color-stop(58%,#e3211f), color-stop(58%,#ffee00), color-stop(74%,#ffee00), color-stop(74%,#ffec00), color-stop(74%,#82af6e), color-stop(74%,#004d9f), color-stop(74%,#014f9a), color-stop(74%,#004e9d), color-stop(78%,#014f9a), color-stop(78%,#014ea0), color-stop(78%,#e2221f), color-stop(78%,#e42021), color-stop(83%,#e42021), color-stop(83%,#e6201f), color-stop(83%,#e12325), color-stop(83%,#e4211f), color-stop(84%,#e22221), color-stop(84%,#e4211f), color-stop(84%,#fe843b), color-stop(84%,#ffaf00), color-stop(100%,#ffaf00)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #ffc801 0%,#fec901 6%,#ffc600 6%,#ffc701 6%,#fbcb00 6%,#fee101 6%,#ffee02 6%,#feef00 6%,#ffed00 22%,#faf100 22%,#ffee00 22%,#ffef01 22%,#e42021 22%,#e42021 26%,#e22221 26%,#e6201f 26%,#93617e 26%,#004e99 26%,#024ca1 26%,#004f98 26%,#014e9e 26%,#014e9c 32%,#edb335 32%,#ffae02 32%,#ffb000 32%,#ffad05 32%,#fcb100 32%,#ffae00 32%,#ffaf00 48%,#ffc50a 48%,#ffe701 48%,#fce702 48%,#ffe402 48%,#fee700 48%,#fee504 49%,#ffe500 49%,#fce700 49%,#ffe500 51%,#fee800 51%,#ffe404 51%,#ffe700 52%,#ffe400 52%,#fee703 52%,#f26748 52%,#e42021 52%,#e3211f 58%,#e42022 58%,#e3211f 58%,#ffee00 58%,#ffee00 74%,#ffec00 74%,#82af6e 74%,#004d9f 74%,#014f9a 74%,#004e9d 74%,#014f9a 78%,#014ea0 78%,#e2221f 78%,#e42021 78%,#e42021 83%,#e6201f 83%,#e12325 83%,#e4211f 83%,#e22221 84%,#e4211f 84%,#fe843b 84%,#ffaf00 84%,#ffaf00 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #ffc801 0%,#fec901 6%,#ffc600 6%,#ffc701 6%,#fbcb00 6%,#fee101 6%,#ffee02 6%,#feef00 6%,#ffed00 22%,#faf100 22%,#ffee00 22%,#ffef01 22%,#e42021 22%,#e42021 26%,#e22221 26%,#e6201f 26%,#93617e 26%,#004e99 26%,#024ca1 26%,#004f98 26%,#014e9e 26%,#014e9c 32%,#edb335 32%,#ffae02 32%,#ffb000 32%,#ffad05 32%,#fcb100 32%,#ffae00 32%,#ffaf00 48%,#ffc50a 48%,#ffe701 48%,#fce702 48%,#ffe402 48%,#fee700 48%,#fee504 49%,#ffe500 49%,#fce700 49%,#ffe500 51%,#fee800 51%,#ffe404 51%,#ffe700 52%,#ffe400 52%,#fee703 52%,#f26748 52%,#e42021 52%,#e3211f 58%,#e42022 58%,#e3211f 58%,#ffee00 58%,#ffee00 74%,#ffec00 74%,#82af6e 74%,#004d9f 74%,#014f9a 74%,#004e9d 74%,#014f9a 78%,#014ea0 78%,#e2221f 78%,#e42021 78%,#e42021 83%,#e6201f 83%,#e12325 83%,#e4211f 83%,#e22221 84%,#e4211f 84%,#fe843b 84%,#ffaf00 84%,#ffaf00 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #ffc801 0%,#fec901 6%,#ffc600 6%,#ffc701 6%,#fbcb00 6%,#fee101 6%,#ffee02 6%,#feef00 6%,#ffed00 22%,#faf100 22%,#ffee00 22%,#ffef01 22%,#e42021 22%,#e42021 26%,#e22221 26%,#e6201f 26%,#93617e 26%,#004e99 26%,#024ca1 26%,#004f98 26%,#014e9e 26%,#014e9c 32%,#edb335 32%,#ffae02 32%,#ffb000 32%,#ffad05 32%,#fcb100 32%,#ffae00 32%,#ffaf00 48%,#ffc50a 48%,#ffe701 48%,#fce702 48%,#ffe402 48%,#fee700 48%,#fee504 49%,#ffe500 49%,#fce700 49%,#ffe500 51%,#fee800 51%,#ffe404 51%,#ffe700 52%,#ffe400 52%,#fee703 52%,#f26748 52%,#e42021 52%,#e3211f 58%,#e42022 58%,#e3211f 58%,#ffee00 58%,#ffee00 74%,#ffec00 74%,#82af6e 74%,#004d9f 74%,#014f9a 74%,#004e9d 74%,#014f9a 78%,#014ea0 78%,#e2221f 78%,#e42021 78%,#e42021 83%,#e6201f 83%,#e12325 83%,#e4211f 83%,#e22221 84%,#e4211f 84%,#fe843b 84%,#ffaf00 84%,#ffaf00 100%); /* IE10+ */
+    background: linear-gradient(to right,  #ffc801 0%,#fec901 6%,#ffc600 6%,#ffc701 6%,#fbcb00 6%,#fee101 6%,#ffee02 6%,#feef00 6%,#ffed00 22%,#faf100 22%,#ffee00 22%,#ffef01 22%,#e42021 22%,#e42021 26%,#e22221 26%,#e6201f 26%,#93617e 26%,#004e99 26%,#024ca1 26%,#004f98 26%,#014e9e 26%,#014e9c 32%,#edb335 32%,#ffae02 32%,#ffb000 32%,#ffad05 32%,#fcb100 32%,#ffae00 32%,#ffaf00 48%,#ffc50a 48%,#ffe701 48%,#fce702 48%,#ffe402 48%,#fee700 48%,#fee504 49%,#ffe500 49%,#fce700 49%,#ffe500 51%,#fee800 51%,#ffe404 51%,#ffe700 52%,#ffe400 52%,#fee703 52%,#f26748 52%,#e42021 52%,#e3211f 58%,#e42022 58%,#e3211f 58%,#ffee00 58%,#ffee00 74%,#ffec00 74%,#82af6e 74%,#004d9f 74%,#014f9a 74%,#004e9d 74%,#014f9a 78%,#014ea0 78%,#e2221f 78%,#e42021 78%,#e42021 83%,#e6201f 83%,#e12325 83%,#e4211f 83%,#e22221 84%,#e4211f 84%,#fe843b 84%,#ffaf00 84%,#ffaf00 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc801', endColorstr='#ffaf00',GradientType=1 ); /* IE6-9 */
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, .75);
+  }
+}

@@ -1,0 +1,115 @@
+.main-footer {
+	padding: 40px 0;
+	background: #555555;
+	color: #eeeeee;
+
+	.footer-ul {
+		display: inline-block;
+		vertical-align: top;
+		margin: -5px 0 0 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			margin-bottom: 15px;
+		}
+
+		.ul-image {
+			display: inline-block;
+			vertical-align: middle;
+			width: 60px;
+			height: 31px;
+			background-image: url(../images/sprussia.png);
+			background-size: 100% auto;
+			background-repeat: no-repeat;
+			bacground-position: center center;
+		}
+
+		.ul-text {
+			display: inline-block;
+			vertical-align: middle;
+			width: 230px;
+			margin-left: 20px;
+			color: #bbbbbb;
+			transition: color .2s ease;
+
+			&:hover {
+				color: inherit;
+			}
+		}
+	}
+
+	.footer-contacts {
+		display: inline-block;
+		vertical-align: top;
+		float: right;
+		color: #fff;
+		line-height: 1.6;
+	}
+
+	.footer-bottom {
+		margin-top: 40px;
+	}
+
+	.footer-desc {
+		display: inline-block;
+		vertical-align: top;
+		font-size: 14px;
+		line-height: 1.4;
+		width: 825px;
+	}
+
+	.footer-soc {
+		display: inline-block;
+		vertical-align: top;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		float: right;
+
+		li {
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 12px;
+		}
+
+		a {
+			display: inline-block;
+			width: 36px;
+			height: 36px;
+			line-height: 36px;
+			border-radius: 36px;
+			background: #777777;
+			text-align: center;
+			text-decoration: none;
+			overflow: hidden;
+			transition: background .2s ease;
+
+			&:hover {
+				background: #dddddd;
+			}
+
+			&:before {
+				@extend .fi;
+				color: #555555;
+			}
+		}
+
+		.soc-twitter {
+			line-height: 38px;
+
+			&:before {
+				content: "\e600";
+			}
+		}
+
+		.soc-facebook {
+			line-height: 42px;
+
+			&:before {
+				content: "\e601";
+				font-size: 20px;
+			}
+		}
+	}
+}

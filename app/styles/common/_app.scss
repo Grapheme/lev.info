@@ -1,0 +1,19 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+	font-family: 'museo_sans_cyrl';
+	font-weight: 300;
+	color: rgb(34, 34, 34);
+}
+
+::-webkit-input-placeholder {color:#212126;}
+::-moz-placeholder          {color:#212126;}
+:-moz-placeholder           {color:#212126;}
+:-ms-input-placeholder      {color:#212126;}
+
+.main-content {
+	
+}
