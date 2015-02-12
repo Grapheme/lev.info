@@ -93,13 +93,13 @@
 
 
 @font-face {
-    font-family: 'pt_serifbold';
+    font-family: 'pt_serif';
     src: url('../fonts/ptf75f-webfont.eot');
     src: url('../fonts/ptf75f-webfont.eot?#iefix') format('embedded-opentype'),
          url('../fonts/ptf75f-webfont.woff2') format('woff2'),
          url('../fonts/ptf75f-webfont.woff') format('woff'),
          url('../fonts/ptf75f-webfont.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 600;
     font-style: normal;
 
 }
@@ -123,13 +123,13 @@
 
 
 @font-face {
-    font-family: 'pt_serifregular';
+    font-family: 'pt_serif';
     src: url('../fonts/ptf55f-webfont.eot');
     src: url('../fonts/ptf55f-webfont.eot?#iefix') format('embedded-opentype'),
          url('../fonts/ptf55f-webfont.woff2') format('woff2'),
          url('../fonts/ptf55f-webfont.woff') format('woff'),
          url('../fonts/ptf55f-webfont.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 400;
     font-style: normal;
 
 }
@@ -138,14 +138,14 @@
 
 
 @font-face {
-    font-family: 'pt_serifbold_italic';
+    font-family: 'pt_serif';
     src: url('../fonts/ptf76f-webfont.eot');
     src: url('../fonts/ptf76f-webfont.eot?#iefix') format('embedded-opentype'),
          url('../fonts/ptf76f-webfont.woff2') format('woff2'),
          url('../fonts/ptf76f-webfont.woff') format('woff'),
          url('../fonts/ptf76f-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    font-weight: 600;
+    font-style: italic;
 
 }
 
@@ -153,14 +153,14 @@
 
 
 @font-face {
-    font-family: 'pt_serifitalic';
+    font-family: 'pt_serif';
     src: url('../fonts/ptf56f-webfont.eot');
     src: url('../fonts/ptf56f-webfont.eot?#iefix') format('embedded-opentype'),
          url('../fonts/ptf56f-webfont.woff2') format('woff2'),
          url('../fonts/ptf56f-webfont.woff') format('woff'),
          url('../fonts/ptf56f-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    font-weight: 400;
+    font-style: italic;
 
 }
 
