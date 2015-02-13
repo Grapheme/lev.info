@@ -1,0 +1,139 @@
+.album-list {
+    margin: 0 0 10px 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+
+    .album-item {
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        width: 50%;
+        margin-bottom: 40px;
+        font-size: 16px;
+
+        &:nth-of-type(2n) {
+            padding-left: 15px;
+        }
+
+        &:nth-of-type(2n+1) {
+            padding-right: 15px;
+        }
+
+        .album-photo {
+            display: block;
+            position: relative;
+            height: 230px;
+            background-size: cover;
+            background-position: center center;
+
+            &:before {
+                content: "";
+                position: absolute;
+                width: 125px;
+                height: 125px;
+                border-radius: 125px;
+                top: 50%;
+                left: 50%;
+                margin-left: -125/2 *1px;
+                margin-top: -125/2 *1px;
+                background: rgba(0, 0, 0, .5);
+                transition: background-color .2s ease;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 125px;
+                height: 125px;
+                margin-left: -125/2 *1px;
+                margin-top: -125/2 *1px;
+                background-size: 50%;
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+
+            &:hover:before {
+                background: rgba(0, 78, 157, .5);
+            }
+        }
+
+        &.photo-item {
+            .album-photo:after {
+                background-image: url(../images/photo.svg);
+            }
+        }
+
+        &.video-item {
+            .album-photo:after {
+                background-image: url(../images/video.svg);
+            }
+        }
+
+        .album-info {
+            margin-top: 17.5px;
+
+            .info-date {
+                font-size: 14px;
+            }
+
+            .info-title {
+                font-family: 'pt_serif';
+                font-size: 18px;
+                margin-top: 10px;
+            }
+
+            .info-amount {
+                font-family: 'pt_serif';
+                font-style: italic;
+                font-size: 14px;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.album-filter {
+    .filter-cont {
+        text-align: center;
+
+        .filter-inside {
+            display: inline-block;
+            text-align: left;
+        }
+
+        .filter-btn {
+            margin-top: 3px;
+        }
+
+        .ui-selectmenu-button {
+            margin-left: 3px;
+
+            &:first-of-type {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .filter-status {
+        height: 60px;
+        line-height: 60px;
+        border-top: 1px solid #cccccc;
+        border-bottom: 1px solid #cccccc;
+        margin: 30px 0 50px;
+
+        .fi {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 35px;
+        }
+
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}
+    

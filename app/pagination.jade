@@ -1,0 +1,9 @@
+.pagination-block
+    a(href="#").pag-arrow.left
+    a(href="#").pag-arrow.right
+    ul.pag-numbers
+        li.active
+            a(href="#") 1
+        each i in [2,3,4,5]
+            li
+                a(href="#") #{i}

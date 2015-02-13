@@ -1,0 +1,73 @@
+.album-cont {
+    .album-info {
+        margin-top: 35px;
+
+        .album-date {
+            font-size: 14px;
+        }
+
+        .album-title {
+            font-size: 30px;
+            font-family: 'pt_serif';
+            line-height: 1.2;
+            margin-top: 15px;
+        }
+
+        .album-author {
+            font-size: 14px;
+            margin-top: 15px;
+        }
+    }
+
+    .album-items {
+        margin: 25px 0 100px;
+        padding: 0;
+        list-style: none;
+        font-size: 0;
+
+        .album-li {
+            display: inline-block;
+            vertical-align: top;
+            width: 100%/3 *1;
+            margin-bottom: 35px;
+
+            &:nth-of-type(3n-1) {
+                text-align: center;
+            }
+
+            &:nth-of-type(3n) {
+                text-align: right;
+            }
+
+            .album-one-photo {
+                position: relative;
+                display: inline-block;
+                width: 305px;
+                height: 230px;
+                background-position: center center;
+                background-size: cover;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: transparent;
+                    transition: background .2s ease;
+                }
+
+                &:hover {
+                    &:after {
+                        background: rgba(0, 78, 157, .5);
+                    }
+                }
+
+                img {
+                    display: none;
+                }
+            }
+        }
+    }
+}

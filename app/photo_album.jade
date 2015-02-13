@@ -1,0 +1,47 @@
+extends layout
+
+block vars
+  - var title = 'Фото';
+
+block content
+    .h1-cont
+        .container_12
+            .grid_12
+                h1 Фото
+            .clearfix
+    .main-content
+        .container_12
+            .grid_8
+                .min-title 2015
+                .in-content
+                    ul.album-list
+                        each i in [1,2,3,4]
+                            li.album-item.photo-item
+                                a(href="photos.html").album-photo(style="background-image: url(../images/tmp/gallery_#{i}.jpg)")
+                                .album-info
+                                    .info-date 22 декабря 2014
+                                    .info-title
+                                        a(href="photos.html").title-link Николай Левичев в эфире телеканала “Россия-24”
+                                    .info-amount 53 фото
+                        .clearfix
+                include pagination
+            .grid_4
+                .min-title Фотоархив
+                .in-content.album-filter
+                    .filter-cont
+                        .filter-inside
+                            select.us-select
+                                option Январь
+                            select.us-select
+                                option 2015
+                            br
+                            button.filter-btn Перейти
+                    .filter-status
+                        a(href="#").title-link
+                            i.fi.icon-keyboard-arrow-left
+                            span Январь 2015
+                        a(href="#").title-link.fl-r
+                            span Декабрь 2015
+                            i.fi.icon-keyboard-arrow-right
+                .min-title Facebook
+            .clearfix

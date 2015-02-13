@@ -1,0 +1,57 @@
+.ui-selectmenu-button span.ui-selectmenu-text {
+    font-family: 'museo_sans_cyrl';
+    font-weight: 300;
+    font-size: 16px;
+    color: #212121;
+    padding: 0;
+    line-height: inherit;
+}
+
+.ui-selectmenu-button {
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding: 0 7px !important;
+    height: 30px;
+    line-height: 30px !important;
+    border: 1px solid #555555 !important;
+    outline: none;
+}
+
+.ui-icon, .ui-widget-content .ui-icon {
+    background: none !important;
+}
+
+.ui-selectmenu-button span.ui-icon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 4px 0 4px;
+    border-color: #222222 transparent transparent transparent;
+    margin-top: -1px;
+}
+
+.ui-state-hover span.ui-icon {
+    border-color: #004e9d transparent transparent transparent;
+}
+
+.ui-menu .ui-menu-item {
+    padding: 0;
+    font-family: 'museo_sans_cyrl';
+    font-size: 16px;
+    font-weight: 300;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 7px;
+    background: transparent;
+    border: none;
+
+    &:hover {
+        background: #fbaf00;
+    }
+}
+.ui-widget-content {
+    border: 1px solid #555555 !important;
+    border-top: none !important;
+    border-radius: 0;
+    background: #fff;
+}

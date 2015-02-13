@@ -1,0 +1,25 @@
+extends layout
+
+block vars
+  - var title = 'Фото';
+
+block content
+    .h1-cont
+        .container_12
+            .grid_12
+                h1 Фото
+            .clearfix
+    .container_12
+        .grid_12
+            .album-cont
+                .album-info
+                    .album-date 01 мая 2014
+                    .album-title В Москве прошли первомайская демонстрация и праздничный митинг СПРАВЕДЛИВОЙ РОССИИ
+                    .album-author Фото: Михаил Малышев
+                ul.album-items
+                    each i in [1,2,3,4,5,6,7,8,9]
+                        li.album-li
+                            a.album-one-photo.js-fancybox(rel="fancybox-thumb" href="images/tmp/photobig_1.jpg" style="background-image: url(../images/tmp/photo_#{i}.jpg)" title='#{i} Николай Левичев принял участие в совместном заседании фракции “СР” и фракции Партии социалистов Республики Молдова')
+                                img(src="images/tmp/photo_#{i}.jpg" alt="")
+
+        .clearfix
