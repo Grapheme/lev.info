@@ -1,23 +1,25 @@
-footer.main-footer
+footer.main-footer(class= error_page ? "footer-error" : "")
 	.container_12
-		.grid_12
-			ul.footer-ul
-				li
-					.ul-image
-					a(href="#").ul-text Партия Справедливая Россия
-				li
-					.ul-image
-					a(href="#").ul-text Палата депутатов партии Справедливая Россия
-			.footer-contacts.
-				Москва, Новинский бульвар, д. 18, корпус 2<br>
-				Пн-Пт, с 9:00 до 17:00<br>
-				+7 (963) 992-55-59<br>
-		.clearfix
+		- if(!error_page)
+			.grid_12
+				ul.footer-ul
+					li
+						.ul-image
+						a(href="#").ul-text Партия Справедливая Россия
+					li
+						.ul-image
+						a(href="#").ul-text Палата депутатов партии Справедливая Россия
+				.footer-contacts.
+					Москва, Новинский бульвар, д. 18, корпус 2<br>
+					Пн-Пт, с 9:00 до 17:00<br>
+					+7 (963) 992-55-59<br>
+			.clearfix
 		.grid_12.footer-bottom
 			.footer-desc © 2008-2015, Официальный сайт Николая Левичева, депутата Государственной Думы Федерального Собрания РФ VI созыва, Заместителя Председателя Государственной Думы РФ от фракции СПРАВЕДЛИВАЯ РОССИЯ, Председателя Совета Палаты депутатов Партии СПРАВЕДЛИВАЯ РОССИЯ.
-			ul.footer-soc
-				li
-					a(href="#").soc-twitter
-				li
-					a(href="#").soc-facebook
+			- if(!error_page)
+				ul.footer-soc
+					li
+						a(href="#").soc-twitter
+					li
+						a(href="#").soc-facebook
 		.clearfix

@@ -1,0 +1,55 @@
+extends layout
+
+block vars
+  - var title = 'Законопроекты';
+
+block content
+    .h1-cont
+        .container_12
+            .grid_12
+                h1 Поиск
+            .clearfix
+    .main-content
+        .container_12
+            .search-block
+                .grid_12
+                    .search-input-cont
+                        form
+                            input.us-input
+                            button.search-btn
+                    .search-stat Вы искали «<b>дискуссия</b>». Найдено документов: <b>243</b>
+                .clearfix
+            .search-results
+                .grid_8
+                    .min-title &nbsp;
+                    ul.main-feed
+                        each i in [0,1]
+                            li.feed-item
+                                .search-info
+                                    span.info-type Новости
+                                    span.info-date 23 декабря 2014
+                                a(href="#").feed-title О внесении изменений в Федеральный закон<br>“О противодействии коррупции”
+                                .feed-desc В части введения <mark>упрощенных механизмов</mark> установления зон охраны объектов культурного наследия.
+                    include pagination
+            .grid_4
+                .min-title &nbsp;
+                ul.album-list.search-albums
+                    li.album-item.photo-item
+                        a(href="photos.html").album-photo(style="background-image: url(../images/tmp/gallery_1.jpg)")
+                        .album-info
+                            .info-date
+                                span.info-type Фото
+                                span 22 декабря 2014
+                            .info-title
+                                a(href="photos.html").title-link Николай Левичев в эфире телеканала “Россия-24”
+                            .info-amount 53 фото
+                    li.album-item.video-item
+                        a(href="photos.html").album-photo(style="background-image: url(../images/tmp/gallery_2.jpg)")
+                        .album-info
+                            .info-date
+                                span.info-type Видео
+                                span 22 декабря 2014
+                            .info-title
+                                a(href="photos.html").title-link Николай Левичев в эфире телеканала “Россия-24”
+                            .info-amount 53 фото
+            .clearfix

@@ -14,7 +14,11 @@
 @import "includes/pagination";
 @import "includes/select";
 @import "includes/fancybox";
+@import "includes/share";
 
+@import "pages/index";
 @import "pages/albums";
 @import "pages/album";
 @import "pages/contacts";
+@import "pages/error";
+@import "pages/search";

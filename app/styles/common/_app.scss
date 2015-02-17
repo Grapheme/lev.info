@@ -9,6 +9,12 @@ html {
 	color: rgb(34, 34, 34);
 }
 
+mark {
+    font-weight: 700;
+    background: #fee600;
+    color: inherit;
+}
+
 ::-webkit-input-placeholder {color:#212126;}
 ::-moz-placeholder          {color:#212126;}
 :-moz-placeholder           {color:#212126;}

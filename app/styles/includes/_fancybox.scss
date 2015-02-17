@@ -22,10 +22,6 @@
     color: rgb(31, 31, 38);
 }
 
-.fancybox-outer {
-    padding-bottom: 10px;
-}
-
 .fancybox-opened .fancybox-skin {
     border-radius: 0;
 }
@@ -105,4 +101,8 @@
             color: #fbaf00;
         }
     }
+}
+
+.fancybox-title {
+    padding: 20px 0 5px 0;
 }

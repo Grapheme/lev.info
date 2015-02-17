@@ -22,6 +22,17 @@
 	}
 }
 
+.us-link {
+	text-decoration: none;
+	color: inherit;
+	border-bottom: 1px solid;
+	transition: border .2s ease;
+
+	&:hover {
+		border-color: transparent;
+	}
+}
+
 .us-input {
 	border: 1px solid #cdcdcd;
 	border-radius: 5px;
@@ -62,10 +73,14 @@ textarea.us-input {
 	border-bottom: 1px solid #cccccc;
 }
 
-.min-title {
+.upper-title {
 	font-size: 14px;
 	text-transform: uppercase;
 	letter-spacing: 2px;
+}
+
+.min-title {
+	@extend .upper-title;
 	margin-top: 30px;
 	padding-bottom: 15px;
 	border-bottom: 1px solid #cccccc;
@@ -108,4 +123,56 @@ textarea.us-input {
 		color: #fff;
 		background: #004e9d;
 	}
+}
+
+.back-link {
+	color: inherit;
+	text-decoration: none;
+
+	.fi {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 35px;
+	}
+
+	span {
+		display: inline-block;
+		vertical-align: middle;
+		border-bottom: 1px solid transparent;
+		transition: border .2s ease;
+	}
+
+	&:hover {
+		span {
+			border-color: inherit;
+		}
+	}
+}
+
+.min-title {
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.back-link {
+		position: absolute;
+		top: -10px;
+	}
+}
+
+.feed-title {
+    font-family: 'pt_serif';
+    font-weight: 400;
+    font-size: 22px;
+    color: #202020;
+    text-decoration: none;
+}
+
+a.feed-title {
+    transition: color .2s ease;
+
+    &:hover {
+        color: #004e9d;
+    }
 }

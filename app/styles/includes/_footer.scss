@@ -3,6 +3,11 @@
 	background: #555555;
 	color: #eeeeee;
 
+	&.footer-error {
+		background: #fff;
+		color: #555555;
+	}
+
 	.footer-ul {
 		display: inline-block;
 		vertical-align: top;

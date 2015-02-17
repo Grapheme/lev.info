@@ -1,0 +1,48 @@
+extends layout
+
+block vars
+  - var title = 'Законопроекты';
+
+block content
+    .h1-cont
+        .container_12
+            .grid_12
+                h1 Новости
+            .clearfix
+    .main-content
+        .container_12
+            .grid_8
+                .min-title Январь 2015
+                ul.main-feed
+                    each i in [0,1]
+                        li.feed-item
+                            a(href="#").feed-title О внесении изменений в Федеральный закон<br>“О противодействии коррупции”
+                            .feed-date 24 декабря 2015
+                            .feed-desc
+                                img(src="images/tmp/newsmin_1.jpg")
+                                span Надо напомнить Правительству, что в нашей огромной Родине во многие тысячи населенных пунктов, в которых зачастую живут далеко не самые богатые люди, можно попасть только поездами. И отмена электричек - не только ограничение конституционного права граждан на свободу передвижые богатые люди, можно попасть только поездами. И отмена электричек - не толени ...
+                                .clearfix
+
+                include pagination
+            .grid_4
+                .min-title Фотоархив
+                .in-content.album-filter
+                    .filter-cont
+                        .filter-inside
+                            select.us-select
+                                option Январь
+                            select.us-select
+                                option 2015
+                            br
+                            button.filter-btn Перейти
+                    .filter-status
+                        a(href="#").title-link
+                            i.fi.icon-keyboard-arrow-left
+                            span Январь 2015
+                        a(href="#").title-link.fl-r
+                            span Декабрь 2015
+                            i.fi.icon-keyboard-arrow-right
+                .min-title Facebook
+                .soc-block
+                .min-title Twitter
+            .clearfix

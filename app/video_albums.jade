@@ -1,0 +1,46 @@
+extends layout
+
+block vars
+  - var title = 'Видео';
+
+block content
+    .h1-cont
+        .container_12
+            .grid_12
+                h1 Видео
+            .clearfix
+    .main-content
+        .container_12
+            .grid_8
+                .min-title 2015
+                .in-content
+                    ul.album-list
+                        each i in [1,2,3,4]
+                            li.album-item.video-item
+                                a.js-fancybox.album-photo(href="https://www.youtube.com/embed/VT1-sitWRtY" class="fancybox.iframe" style="background-image: url(../images/tmp/gallery_#{i}.jpg)")
+                                .album-info
+                                    .info-date 22 декабря 2014
+                                    .info-title
+                                        a.js-fancybox.title-link(href="https://www.youtube.com/embed/VT1-sitWRtY" class="fancybox.iframe") Николай Левичев в эфире телеканала “Россия-24”
+                        .clearfix
+                include pagination
+            .grid_4
+                .min-title Видеоархив
+                .in-content.album-filter
+                    .filter-cont
+                        .filter-inside
+                            select.us-select
+                                option Январь
+                            select.us-select
+                                option 2015
+                            br
+                            button.filter-btn Перейти
+                    .filter-status
+                        a(href="#").title-link
+                            i.fi.icon-keyboard-arrow-left
+                            span Январь 2015
+                        a(href="#").title-link.fl-r
+                            span Декабрь 2015
+                            i.fi.icon-keyboard-arrow-right
+                .min-title Facebook
+            .clearfix

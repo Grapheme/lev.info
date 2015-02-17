@@ -1,0 +1,16 @@
+extends layout
+
+block vars
+  - var title = 'Страница не найдена';
+  - var error_page = true;
+
+block content
+    .error-cont
+        .container_12
+            .grid_12
+                .error-number 404
+                .error-text Страница не найдена
+                .error-desc
+                    p Если вы уверены, что это какое - то недоразумение, и тут должно быть нечто важное, <a href="#">напишите нам</a>.
+                    p Вернуться на <a href="#">главную страницу</a> сайта
+            .clearfix

@@ -1,0 +1,44 @@
+extends layout
+
+block vars
+  - var title = 'Аудио';
+
+block content
+    .h1-cont
+        .container_12
+            .grid_12
+                h1 Аудио
+            .clearfix
+    .main-content
+        .container_12
+            .grid_8
+                .min-title Январь 2015
+                ul.main-feed
+                    each i in [0,1]
+                        li.feed-item.js-audio-cont
+                            .feed-date 24 декабря 2015
+                            a(href="#").feed-title.js-audio-open О внесении изменений в Федеральный закон<br>“О противодействии коррупции”
+                            .audio-cont.js-audio <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/183724785&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+                include pagination
+            .grid_4
+                .min-title Аудиоархив
+                .in-content.album-filter
+                    .filter-cont
+                        .filter-inside
+                            select.us-select
+                                option Январь
+                            select.us-select
+                                option 2015
+                            br
+                            button.filter-btn Перейти
+                    .filter-status
+                        a(href="#").title-link
+                            i.fi.icon-keyboard-arrow-left
+                            span Январь 2015
+                        a(href="#").title-link.fl-r
+                            span Декабрь 2015
+                            i.fi.icon-keyboard-arrow-right
+                .min-title Facebook
+                .soc-block
+                .min-title Twitter
+            .clearfix

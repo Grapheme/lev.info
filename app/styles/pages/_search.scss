@@ -1,0 +1,62 @@
+.search-block {
+    .search-input-cont {
+        position: relative;
+
+        .us-input {
+            height: 50px;
+            width: 100%;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            line-height: 47px;
+            border: none;
+            outline: none;
+            background: transparent;
+
+            &:before {
+              @extend .fi;
+              content: "\e607";
+              font-size: 40px;
+              line-height: 47px;
+            }
+        }
+    }
+
+    .search-stat {
+        margin-top: 30px;
+    }
+}
+
+.search-results {
+    margin-top: 35px;
+
+    .search-info {
+        margin-bottom: 15px;
+
+        span {
+            margin-right: 15px;
+        }
+
+        .info-type {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.search-albums {
+    .album-item {
+        width: 100%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        border-bottom: 1px solid #cccccc;
+        margin: 0;
+        padding: 20px 0 30px;
+    }
+}

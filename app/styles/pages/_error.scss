@@ -1,0 +1,29 @@
+.error-cont {
+    padding: 70px 0 70px;
+
+    .error-number {
+        font-size: 100px;
+        font-weight: 100;
+        color: #faae00;
+        letter-spacing: 5px;
+    }
+
+    .error-text {
+        font-size: 34px;
+        font-weight: 100;
+        text-transform: uppercase;
+        margin-top: 10px;
+    }
+
+    .error-desc {
+        margin-top: 40px;
+
+        a {
+            @extend .us-link;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+    }
+}

@@ -38,10 +38,11 @@ levinfo.fancybox = function() {
         prevEffect  : 'none',
         nextEffect  : 'none',
         margin      : [20, 150, 20, 150],
-        padding     : [20, 20, 30, 20],
+        padding     : [20, 20, 20, 20],
         helpers : {
             title   : {
                 type: 'inside',
+                position: 'bottom'
             },
             thumbs  : {
                 width   : 80,
@@ -54,11 +55,40 @@ levinfo.fancybox = function() {
         }
     });
 }
+levinfo.fotorama = function() {
+    var $fotoramaDiv = $('.js-fotorama').fotorama({
+        height: $('.js-slider').height(),
+        width: '100%',
+        fit: 'cover',
+        arrows: false,
+        nav: false,
+        loop: true
+    });
+    var fotorama = $fotoramaDiv.data('fotorama');
+    $('.js-slider .js-prev').on('click', function(){
+        fotorama.show('<');
+        return false;
+    });
+    $('.js-slider .js-next').on('click', function(){
+        fotorama.show('>');
+        return false;
+    });
+}
+levinfo.audio = function() {
+    $('.js-audio-open').on('click', function(){
+        $(this).parents('.js-audio-cont').find('.js-audio').slideToggle();
+    });
+    $('.js-audio-opened').find('.js-audio').show();
+}
 levinfo.main = function() {
     levinfo.fancybox();
     levinfo.selects();
     if($('.js-tabs-parent').length)
         levinfo.stabs();
+    if($('.js-slider').length)
+        levinfo.fotorama();
+    if($('.js-audio-cont').length)
+        levinfo.audio();
     $('.js-autosize').autosize();
 }
 $(function(){

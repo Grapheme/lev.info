@@ -1,0 +1,58 @@
+.share-block {
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    padding: 20px 0;
+
+    span {
+        font-size: 14px;
+        font-weight: 100;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    a {
+        display: inline-block;
+        vertical-align: middle;
+        box-sizing: border-box;
+        margin-left: 15px;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 36px;
+        border: 1px solid #cecece;
+        text-align: center;
+        text-decoration: none;
+        overflow: hidden;
+        transition: all .2s ease;
+
+        &:hover {
+            border-color: #004ca0;
+
+            &:before {
+                color: #004ca0;
+            }
+        }
+
+        &:before {
+            @extend .fi;
+            color: #555555;
+        }
+    }
+
+    .soc-twitter {
+        line-height: 38px;
+
+        &:before {
+            content: "\e600";
+        }
+    }
+
+    .soc-facebook {
+        line-height: 42px;
+
+        &:before {
+            content: "\e601";
+            font-size: 20px;
+        }
+    }
+}
