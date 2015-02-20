@@ -1,26 +1,19 @@
+- var options = [{"name": "Фото", "url": "photo_albums"},{"name": "Видео", "url": "video_albums"},{"name": "Аудио", "url": "audio"},{"name": "Новости", "url": "news"},{"name": "Законопроекты", "url": "laws"},{"name": "Биография", "url": "bio"},{"name": "Контакты", "url": "contacts"}];
+
 header.main-header
 	.container_12
 		.grid_12
 			.person-info
-				.person-title Николай Левичев
-				.person-desc Заместитель Председателя Государственной Думы ФС РФ<br>VI созыва
+				.person-title
+					a(href="index.html") Николай Левичев
+				.person-desc
+					a(href="index.html") Заместитель Председателя Государственной Думы ФС РФ<br>VI созыва
 			- if(!error_page)
 				nav.main-nav
 					ul.nav-ul
-						li.nav-item
-							a(href="news.html") Новости
-						li.nav-item
-							a(href="photo_albums.html") Фото
-						li.nav-item
-							a(href="video_albums.html") Видео
-						li.nav-item
-							a(href="#") Аудио
-						li.nav-item
-							a(href="laws.html") Законопроекты
-						li.nav-item
-							a(href="#") Биография
-						li.nav-item
-							a(href="contacts.html") Контакты
+						each option in options
+							li.nav-item(class = title == option.name ? "active" : "")
+								a(href="#{option.url}.html") #{option.name}
 				.search-block
 					form(action="search.html")
 						.search-cont

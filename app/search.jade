@@ -1,7 +1,7 @@
 extends layout
 
 block vars
-  - var title = 'Законопроекты';
+  - var title = 'Поиск';
 
 block content
     .h1-cont
@@ -35,7 +35,7 @@ block content
                 .min-title &nbsp;
                 ul.album-list.search-albums
                     li.album-item.photo-item
-                        a(href="photos.html").album-photo(style="background-image: url(../images/tmp/gallery_1.jpg)")
+                        a(href="photos.html" style="background-image: url(images/tmp/gallery_1.jpg)").album-photo
                         .album-info
                             .info-date
                                 span.info-type Фото
@@ -44,7 +44,7 @@ block content
                                 a(href="photos.html").title-link Николай Левичев в эфире телеканала “Россия-24”
                             .info-amount 53 фото
                     li.album-item.video-item
-                        a(href="photos.html").album-photo(style="background-image: url(../images/tmp/gallery_2.jpg)")
+                        a(href="photos.html" style="background-image: url(images/tmp/gallery_2.jpg)").album-photo
                         .album-info
                             .info-date
                                 span.info-type Видео

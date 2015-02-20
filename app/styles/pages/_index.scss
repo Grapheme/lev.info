@@ -31,6 +31,21 @@
         background: #fff;
         overflow: hidden;
 
+        .fororama-slide {
+            position: relative;
+            height: 100%;
+            background-position: center center;
+            background-size: cover;
+
+            a {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+        }
+
         .fotorama__caption {
             bottom: 20px;
             font-family: 'pt_serif';
@@ -102,6 +117,11 @@
     border-bottom: 14px solid #f7f7f7;
     padding: 18px 20px;
     margin: 20px 0 50px;
+
+    .section-title {
+        text-decoration: none;
+        color: inherit;
+    }
 
     .feed-title {
         display: inline-block;

@@ -1,0 +1,48 @@
+extends layout
+
+block vars
+  - var title = 'Биография';
+
+block content
+    .h1-cont
+        .container_12
+            .grid_12
+                h1 Биография
+            .clearfix
+    .bio
+        .container_12
+            .grid_12
+                .bio-title Николай Владимирович Левичев
+                .bio-desc Председатель партии «Справедливая Россия» с 2011 года, председатель ООД «Хартия жизни». В прошлом – глава фракции «Справедливой России» партии в Госдуме РФ пятого созыва (декабрь 2007 – июнь 2011 года), заместитель председателя Российской партии жизни, ее идеолог и один из создателей.
+                ul.bio-tab-links
+                    each option in [{"n": "Биография", "s": "bio", "active": false}, {"n": "Страницы жизни", "s": "bio_live", "active": false}, {"n": "Публикации", "s": "bio_press", "active": true}]
+                        li(class = option.active ? "active":"")
+                            a(href="#{option.s}.html") #{option.n}
+            .clearfix
+            ul.bio-tabs
+                li.tab-item.press-tab(data-tab="press")
+                    .grid_8
+                        .min-title Публикации в прессе
+                        ul.press-ul
+                            each i in [1,2,3,4,5,6]
+                                li.press-li
+                                    .press-cont
+                                        a(href="#").press-image
+                                            img(src="images/tmp/press_#{i}.jpg")
+                                        .press-info
+                                            .press-date 3 октября 2014 года
+                                            a(href="#").press-title Николай Левичев: Создание Евразийского экономического союза — это историческое событие
+                                            .upper-title ПАРЛАМЕНТСКАЯ РОССИЯ
+
+                    .grid_4
+                        .min-title Книги
+                        ul.books-ul
+                            each i in [1,2,3]
+                                li.books-li
+                                    a(href="#").book-image
+                                        img(src="images/tmp/book_#{i}.jpg")
+                                    .book-info
+                                        a(href="#").book-title ЖАРКОЕ ХОЛОДНОЕ ЛЕТО 2013
+                                        .book-desc Статьи, выступления, интервью<br>(ИЮЛЬ — СЕНТЯБРЬ 2013)
+                                        a(href="#").book-type PDF (256 кB.)
+                    .clearfix

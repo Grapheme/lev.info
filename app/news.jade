@@ -1,7 +1,7 @@
 extends layout
 
 block vars
-  - var title = 'Законопроекты';
+  - var title = 'Новости';
 
 block content
     .h1-cont
@@ -16,7 +16,7 @@ block content
                 ul.main-feed
                     each i in [0,1]
                         li.feed-item
-                            a(href="#").feed-title О внесении изменений в Федеральный закон<br>“О противодействии коррупции”
+                            a(href="news_one.html").feed-title О внесении изменений в Федеральный закон<br>“О противодействии коррупции”
                             .feed-date 24 декабря 2015
                             .feed-desc
                                 img(src="images/tmp/newsmin_1.jpg")
