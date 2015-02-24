@@ -13,7 +13,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'grapheme-cms',
+			'database'  => 'levichev',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',

@@ -111,29 +111,48 @@ class DicLib extends BaseController {
      */
     public static function loadImages($collection, $key = 'image_id', $field = null){
 
-        if (!is_object($collection))
-            return $collection;
+        #Helper::ta($collection);
 
         if (!is_array($key))
             $key = (array)$key;
 
-        #Helper::tad(get_class($collection));
+        #Helper::ta(get_class($collection));
+        #Helper::tad($collection instanceof Collection);
 
+        #Helper::ta((int)($collection instanceof \Illuminate\Pagination\Paginator));
         #dd($collection);
+        #var_dump($collection);
+
         $single_mode = false;
+        $paginator_mode = false;
 
-        if (get_class($collection) == 'DicVal') {
+        #die($collection instanceof Collection);
 
-            $temp = $collection;
+        if ($collection instanceof Collection || $collection instanceof Illuminate\Database\Eloquent\Collection) {
+
+            ## all ok
+
+        } elseif ($collection instanceof \Illuminate\Pagination\Paginator) {
+
+            $paginator_mode = true;
+            $paginator = clone $collection;
+            $collection = $collection->getItems();
+
+        } else {
+
             $single_mode = true;
+            $temp = $collection;
             $collection = new Collection();
             $collection->put(0, $temp);
         }
 
-        #Helper::dd($collection);
+        #Helper::tad('single: ' . $single_mode . ', paginator: ' . $paginator_mode . '');
+
+        #Helper::tad($collection);
+        #dd($collection);
 
         if (!count($collection) || !count($key))
-            return false;
+            return $collection;
 
         $images_ids = array();
         /**
@@ -146,12 +165,18 @@ class DicLib extends BaseController {
              */
             $work_obj = $field ? $obj->$field : $obj;
 
-            #Helper::dd($work_obj);
+            #dd($work_obj->$key[0]);
+            #dd($work_obj);
 
             /**
              * Перебираем все переданные ключи с ID изображений
              */
             foreach ($key as $attr)
+
+                if (!is_object($work_obj)) {
+                    dd($work_obj);
+                }
+
                 if (is_numeric($work_obj->$attr)) {
 
                     /**
@@ -174,6 +199,8 @@ class DicLib extends BaseController {
         }
 
 
+        #dd($collection);
+
         if (count($images)) {
 
             /**
@@ -189,8 +216,9 @@ class DicLib extends BaseController {
                 /**
                  * Перебираем все переданные ключи с ID изображений
                  */
-                foreach ($key as $attr)
-                    if (is_numeric($work_obj->$attr)) {
+                foreach ($key as $attr) {
+
+                    if (is_object($work_obj) && is_numeric($work_obj->$attr)) {
 
                         if (@$images[$work_obj->$attr]) {
 
@@ -200,17 +228,37 @@ class DicLib extends BaseController {
                             $work_obj->setAttribute($attr, $image);
                         }
                     }
+                }
 
                 if ($field) {
                     $obj->$field = $work_obj;
+                    #} else {
+                    #    $obj = $work_obj;
                 }
 
-                $collection->put($o, $obj);
+                if (is_object($collection))
+                    $collection->put($o, $obj);
+                else
+                    $collection[$o] = $obj;
             }
         }
 
-        if ($single_mode)
+        #dd($single_mode);
+
+        if ($paginator_mode) {
+
+            $paginator->setItems($collection);
+            $collection = $paginator;
+
+        } else if ($single_mode) {
+
             $collection = $collection[0];
+        }
+
+        #Helper::tad($collection);
+        #dd($collection);
+        #var_dump($collection);
+        #Helper::ta('<hr/>');
 
         return $collection;
     }
@@ -231,24 +279,41 @@ class DicLib extends BaseController {
      */
     public static function loadGallery($collection, $key = 'gallery_id', $field = null){
 
-        if (!is_object($collection))
-            return $collection;
-
         if (!is_array($key))
             $key = (array)$key;
 
-        if (get_class($collection) == 'DicVal') {
+        #Helper::ta(get_class($collection));
+        #Helper::tad($collection instanceof Collection);
 
+        #Helper::ta((int)($collection instanceof \Illuminate\Pagination\Paginator));
+        #dd($collection);
+
+        $single_mode = false;
+        $paginator_mode = false;
+
+        if ($collection instanceof Collection) {
+
+            ## all ok
+
+        } elseif ($collection instanceof \Illuminate\Pagination\Paginator) {
+
+            $paginator_mode = true;
+            $paginator = clone $collection;
+            $collection = $collection->getItems();
+
+        } else {
+
+            $single_mode = true;
             $temp = $collection;
-
             $collection = new Collection();
             $collection->put(0, $temp);
         }
 
-        #Helper::dd($collection);
+        #Helper::tad($collection);
+        #dd($collection);
 
         if (!count($collection) || !count($key))
-            return false;
+            return $collection;
 
         $ids = array();
         /**
@@ -261,13 +326,19 @@ class DicLib extends BaseController {
              */
             $work_obj = $field ? $obj->$field : $obj;
 
-            #Helper::dd($work_obj);
+            #Helper::ta($work_obj);
+            #continue;
+            #dd($work_obj);
 
             /**
              * Перебираем все переданные ключи с ID
              */
-            foreach ($key as $attr)
-                if (is_numeric($work_obj->$attr)) {
+            foreach ($key as $attr) {
+
+                #var_dump($work_obj);
+                #continue;
+
+                if (is_object($work_obj) && is_numeric($work_obj->$attr)) {
 
                     /**
                      * Собираем ID - в общий список и в список с разбиением по ключу
@@ -275,10 +346,11 @@ class DicLib extends BaseController {
                     $ids_attr[$attr][] = $work_obj->$attr;
                     $ids[] = $work_obj->$attr;
                 }
+            }
         }
         #Helper::dd($images_ids);
         #Helper::d($images_ids_attr);
-
+        #die;
 
         $objects = [];
         if (count($ids)) {
@@ -321,12 +393,193 @@ class DicLib extends BaseController {
                 }
 
                 #$collection->relations[$o] = $obj;
-                $collection->put($o, $obj);
+                if (is_object($collection))
+                    $collection->put($o, $obj);
+                else
+                    $collection[$o] = $obj;
             }
         }
 
-        return $collection;
+        if ($paginator_mode) {
 
+            $paginator->setItems($collection);
+            $collection = $paginator;
+
+        } else if ($single_mode)
+            $collection = $collection[0];
+
+        #Helper::tad($collection);
+        #dd($collection);
+
+        return $collection;
+    }
+
+
+    /**
+     * С помощью данного метода можно подгрузить файлы (Upload) к элементам коллекции по их ID, хранящемся в поле
+     * В качестве третьего параметра можно передать название поля элемента коллекции, например связи один-ко-многим.
+     *
+     * Пример вызова:
+     * $specials = DicLib::loadFiles($specials, ['special_photo_file', 'special_plan_file']);
+     *
+     * @param $collection
+     * @param string $key
+     * @param string/null $field
+     * @return bool
+     */
+    public static function loadFiles($collection, $key = 'file_id', $field = null){
+
+        #Helper::ta($collection);
+
+        if (!is_array($key))
+            $key = (array)$key;
+
+        #Helper::ta(get_class($collection));
+        #Helper::tad($collection instanceof Collection);
+
+        #Helper::ta((int)($collection instanceof \Illuminate\Pagination\Paginator));
+        #dd($collection);
+        #var_dump($collection);
+
+        $single_mode = false;
+        $paginator_mode = false;
+
+        #die($collection instanceof Collection);
+
+        if ($collection instanceof Collection || $collection instanceof Illuminate\Database\Eloquent\Collection) {
+
+            ## all ok
+
+        } elseif ($collection instanceof \Illuminate\Pagination\Paginator) {
+
+            $paginator_mode = true;
+            $paginator = clone $collection;
+            $collection = $collection->getItems();
+
+        } else {
+
+            $single_mode = true;
+            $temp = $collection;
+            $collection = new Collection();
+            $collection->put(0, $temp);
+        }
+
+        #Helper::tad('single: ' . $single_mode . ', paginator: ' . $paginator_mode . '');
+
+        #Helper::tad($collection);
+        #dd($collection);
+
+        if (!count($collection) || !count($key))
+            return $collection;
+
+        $files_ids = [];
+        $files_ids_attr = [];
+        /**
+         * Перебираем все объекты в коллекции
+         */
+        foreach ($collection as $obj) {
+
+            /**
+             * Если при вызове указано поле (связь) - берем ее вместо текущего объекта
+             */
+            $work_obj = $field ? $obj->$field : $obj;
+
+            #dd($work_obj->$key[0]);
+            #dd($work_obj);
+
+            /**
+             * Перебираем все переданные ключи с ID файлов
+             */
+            foreach ($key as $attr)
+
+                if (!is_object($work_obj)) {
+                    dd($work_obj);
+                }
+
+            if (is_numeric($work_obj->$attr)) {
+
+                /**
+                 * Собираем ID файлов - в общий список и в список с разбиением по ключу
+                 */
+                $files_ids_attr[$attr][] = $work_obj->$attr;
+                $files_ids[] = $work_obj->$attr;
+            }
+        }
+        #Helper::dd($files_ids);
+        #Helper::d($files_ids_attr);
+
+
+        $files = [];
+        if (count($files_ids)) {
+
+            $files = Upload::whereIn('id', $files_ids)->get();
+            $files = self::modifyKeys($files, 'id');
+            #Helper::tad($files);
+        }
+
+
+        #dd($collection);
+
+        if (count($files)) {
+
+            /**
+             * Перебираем все объекты в коллекции
+             */
+            foreach ($collection as $o => $obj) {
+
+                /**
+                 * Если при вызове указано поле (связь) - берем ее вместо текущего объекта
+                 */
+                $work_obj = $field ? $obj->$field : $obj;
+
+                /**
+                 * Перебираем все переданные ключи с ID изображений
+                 */
+                foreach ($key as $attr) {
+
+                    if (is_object($work_obj) && is_numeric($work_obj->$attr)) {
+
+                        if (@$files[$work_obj->$attr]) {
+
+                            $tmp = $work_obj->$attr;
+                            $image = $files[$tmp];
+
+                            $work_obj->setAttribute($attr, $image);
+                        }
+                    }
+                }
+
+                if ($field) {
+                    $obj->$field = $work_obj;
+                    #} else {
+                    #    $obj = $work_obj;
+                }
+
+                if (is_object($collection))
+                    $collection->put($o, $obj);
+                else
+                    $collection[$o] = $obj;
+            }
+        }
+
+        #dd($single_mode);
+
+        if ($paginator_mode) {
+
+            $paginator->setItems($collection);
+            $collection = $paginator;
+
+        } else if ($single_mode) {
+
+            $collection = $collection[0];
+        }
+
+        #Helper::tad($collection);
+        #dd($collection);
+        #var_dump($collection);
+        #Helper::ta('<hr/>');
+
+        return $collection;
     }
 
 

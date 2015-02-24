@@ -388,7 +388,7 @@ class Dic extends BaseModel {
 
         $value = $value->first();
 
-        if ($extract)
+        if ($extract && is_object($value))
             $value->extract($unset);
 
         return $value;

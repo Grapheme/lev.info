@@ -47,11 +47,10 @@ if (isset($page) && is_object($page) && isset($page->seo) && is_object($page->se
         <title>@yield('title')</title>
         <meta name="description" content="@yield('description')">
         <meta name="keywords" content="@yield('keywords')">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        {{ HTML::stylemod(Config::get('site.theme_path').'/styles/main.css') }}
-        {{ HTML::scriptmod('js/vendor/modernizr-2.6.2.min.js') }}
-
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        {{ HTML::style(Config::get('site.theme_path').'/styles/vendor.css') }}
+        {{ HTML::style(Config::get('site.theme_path').'/styles/main.css') }}
+        {{ HTML::script(Config::get('site.theme_path').'/scripts/vendor/modernizr.js') }}
