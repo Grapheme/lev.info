@@ -4,9 +4,7 @@
  */
 ?>
 <?
-$contacts = Dic::valueBySlugs('options', 'footer_contacts', ['textfields']);
-$facebook_link = Dic::valueBySlugs('options', 'facebook_link', ['textfields']);
-$twitter_link = Dic::valueBySlugs('options', 'twitter_link', ['textfields']);
+$options = Dic::valuesBySlugs('options', ['facebook_link', 'twitter_link', 'footer_contacts'], ['textfields']);
 ?>
 <footer class="main-footer">
     <div class="container_12">
@@ -21,9 +19,9 @@ $twitter_link = Dic::valueBySlugs('options', 'twitter_link', ['textfields']);
                     <a href="#" class="ul-text">Палата депутатов партии Справедливая Россия</a>
                 </li>
             </ul>
-            @if (isset($contacts) && is_object($contacts) && $contacts->value)
+            @if (isset($options['footer_contacts']) && is_object($options['footer_contacts']) && $options['footer_contacts']->value)
                 <div class="footer-contacts">
-                    {{ nl2br($contacts->value) }}
+                    {{ nl2br($options['footer_contacts']->value) }}
                 </div>
             @endif
         </div>
@@ -34,11 +32,11 @@ $twitter_link = Dic::valueBySlugs('options', 'twitter_link', ['textfields']);
                 СПРАВЕДЛИВАЯ РОССИЯ, Председателя Совета Палаты депутатов Партии СПРАВЕДЛИВАЯ РОССИЯ.
             </div>
             <ul class="footer-soc">
-                @if (isset($twitter_link) && is_object($twitter_link) && $twitter_link->value)
-                    <li><a href="{{ $twitter_link->value }}" class="soc-twitter"></a></li>
+                @if (isset($options['twitter_link']) && is_object($options['twitter_link']) && $options['twitter_link']->value)
+                    <li><a href="{{ $options['twitter_link']->value }}" class="soc-twitter"></a></li>
                 @endif
-                @if (isset($facebook_link) && is_object($facebook_link) && $facebook_link->value)
-                    <li><a href="{{ $facebook_link->value }}" class="soc-facebook"></a></li>
+                @if (isset($options['facebook_link']) && is_object($options['facebook_link']) && $options['facebook_link']->value)
+                    <li><a href="{{ $options['facebook_link']->value }}" class="soc-facebook"></a></li>
                 @endif
             </ul>
         </div>

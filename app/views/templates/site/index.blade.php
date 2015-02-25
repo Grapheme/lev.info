@@ -5,6 +5,11 @@
  */
 ?>
 <?
+#$facebook_widget = Dic::valueBySlugs('options', 'facebook_widget', ['textfields']);
+#$twitter_widget = Dic::valueBySlugs('options', 'twitter_widget', ['textfields']);
+$options = Dic::valuesBySlugs('options', ['facebook_widget', 'twitter_widget'], ['textfields']);
+
+
 $slides = Dic::valuesBySlug('slider');
 $slides = DicLib::loadImages($slides, 'image');
 #Helper::tad($slides);
@@ -47,9 +52,6 @@ $videos = Dic::valuesBySlug('video', function($query) {
 }, ['textfields']);
 $videos = DicLib::loadImages($videos, 'image');
 #Helper::tad($videos);
-
-$facebook = Dic::valueBySlugs('options', 'facebook_widget', ['textfields']);
-$twitter = Dic::valueBySlugs('options', 'twitter_widget', ['textfields']);
 ?>
 @extends(Helper::layout())
 
@@ -68,7 +70,7 @@ $twitter = Dic::valueBySlugs('options', 'twitter_widget', ['textfields']);
                     <div class="index-slider js-slider"><a href="#" class="index-arrow a-left js-prev"></a><a href="#" class="index-arrow a-right js-next"></a>
                         <div class="js-fotorama">
                             @foreach ($slides as $slide)
-                                <div style="background-image: url({{ !is_object($slide->image) ?: $slide->image->full() }})" data-caption="Николай Левичев подвел итоги 2014 года" class="fororama-slide">&nbsp;<a href="{{ $slide->link ?: '#' }}"></a></div>
+                                <div style="background-image: url({{ is_object($slide->image) ? $slide->image->full() : '' }})" data-caption="Николай Левичев подвел итоги 2014 года" class="fororama-slide">&nbsp;<a href="{{ $slide->link ?: '#' }}"></a></div>
                             @endforeach
                         </div>
                     </div>
@@ -88,9 +90,9 @@ $twitter = Dic::valueBySlugs('options', 'twitter_widget', ['textfields']);
                     <ul class="main-feed">
                         @foreach ($news as $new)
                             <li class="feed-item">
-                                <div class="feed-date">24 декабря 2015</div>
+                                <div class="feed-date">{{ Helper::rdate('j M Y', $new->published_at) }}</div>
                                 <a href="{{ URL::route('app.new', $new->slug) }}" class="feed-title">{{ $new->name }}</a>
-                                <div class="feed-desc"><img src="{{ !is_object($new->image) ?: $new->image->full() }}"><span>{{ $new->preview }}</span>
+                                <div class="feed-desc"><img src="{{ is_object($new->image) ? $new->image->full() : '' }}"><span>{{ $new->preview }}</span>
                                     <div class="clearfix"></div>
                                 </div>
                             </li>
@@ -111,7 +113,7 @@ $twitter = Dic::valueBySlugs('options', 'twitter_widget', ['textfields']);
                     <div class="in-content">
                         <ul class="album-list">
                             @foreach ($photos as $photo)
-                            <li class="album-item photo-item"><a href="{{ URL::route('app.gallery', $photo->id) }}" style="background-image: url({{ !is_object($photo->image) ?: $photo->image->full() }})" class="album-photo"></a>
+                            <li class="album-item photo-item"><a href="{{ URL::route('app.gallery', $photo->id) }}" style="background-image: url({{ is_object($photo->image) ? $photo->image->full() : '' }})" class="album-photo"></a>
                                 <div class="album-info">
                                     <div class="info-date">{{ Helper::rdate('j M Y', $photo->created_at) }}</div>
                                     <div class="info-title"><a href="photos.html" class="title-link">{{ $photo->name }}</a></div>
@@ -149,7 +151,7 @@ $twitter = Dic::valueBySlugs('options', 'twitter_widget', ['textfields']);
                             <?
                             $embed_link = str_replace('/watch?v=', '/embed/', $video->youtube_link);
                             ?>
-                            <li class="album-item video-item"><a href="{{ $embed_link }}" style="background-image: url({{ !is_object($photo->image) ?: $photo->image->full() }})" class="js-fancybox album-photo fancybox.iframe"></a>
+                            <li class="album-item video-item"><a href="{{ $embed_link }}" style="background-image: url({{ is_object($photo->image) ? $photo->image->full() : '' }})" class="js-fancybox album-photo fancybox.iframe"></a>
                                 <div class="album-info">
                                     <div class="info-date"><span>{{ Helper::rdate('j M Y', $audio->created_at) }}</span></div>
                                     <div class="info-title"><a href="{{ $embed_link }}" class="js-fancybox title-link fancybox.iframe">{{ $video->name }}</a></div>
@@ -159,17 +161,17 @@ $twitter = Dic::valueBySlugs('options', 'twitter_widget', ['textfields']);
                     </ul>
                 @endif
 
-                @if (isset($facebook) && is_object($facebook) && $facebook->value)
+                @if (isset($options['facebook_widget']) && is_object($options['facebook_widget']) && $options['facebook_widget']->value)
                     <div class="min-title">Facebook</div>
                     <div class="soc-block">
-                        {{ $facebook->value }}
+                        {{ $options['facebook_widget']->value }}
                     </div>
                 @endif
 
-                @if (isset($twitter) && is_object($twitter) && $twitter->value)
+                @if (isset($options['twitter_widget']) && is_object($options['twitter_widget']) && $options['twitter_widget']->value)
                     <div class="min-title">Twitter</div>
                     <div class="soc-block">
-                        {{ $twitter->value }}
+                        {{ $options['twitter_widget']->value }}
                     </div>
                 @endif
             </div>

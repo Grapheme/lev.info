@@ -121,17 +121,19 @@ class Helper {
         return $full;
     }
 
-    public static function rdate($param = "j M Y", $time = 0, $lower = true) {
+    public static function rdate($param = "j M Y", $time = 0, $lower = true, $im = false) {
         if (!is_int($time) && !is_numeric($time)) {
             $time = strtotime($time);
         }
         if (intval($time) == 0) {
             $time = time();
         }
+        $MonthNamesIm = array("Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь");
         $MonthNames = array("Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря");
         if (strpos($param, 'M') === false) {
             return date($param, $time);
         } else {
+            $MonthNames = $im ? $MonthNamesIm : $MonthNames;
             $month = $MonthNames[date('n', $time) - 1];
             if ($lower) {
                 $month = mb_strtolower($month);

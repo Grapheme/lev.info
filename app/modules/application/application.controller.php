@@ -26,9 +26,14 @@ class ApplicationController extends BaseController {
 	}
 
 
-    public function postRequestCall() {
+    public function getAppNew($slug) {
 
-        #
+        $new = Dic::valueBySlugs('news', $slug, ['fields', 'textfields'], true, true, false, 2);
+        $new = DicLib::loadImages($new, 'image');
+        #Helper::smartQueries(1);
+        #Helper::tad($new);
+
+        return View::make(Helper::layout('news_one'), compact('new', 'slug'));
     }
 
 

@@ -373,6 +373,7 @@ class Dic extends BaseModel {
         if (!is_object($dic))
             return $return;
 
+
         $value = DicVal::where('dic_id', $dic->id)
             ->where('version_of', NULL)
             ->where('slug', $val_slug)
@@ -392,6 +393,56 @@ class Dic extends BaseModel {
             $value->extract($unset);
 
         return $value;
+    }
+
+
+    /**
+     * Возвращает значения записей из словаря по системному имени словаря и списку системных имен записей.
+     *
+     * @param $slug
+     * @param $val_slugs
+     * @param string $with
+     * @param bool $extract
+     * @param bool $unset
+     * @return $this|Collection|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null|static
+     */
+    public static function valuesBySlugs($slug, $val_slugs, $with = 'all', $extract = true, $unset = true) {
+
+        $return = new Collection();
+
+        $dic = Dic::where('slug', $slug)->first();
+        if (!is_object($dic))
+            return $return;
+
+        $values = DicVal::where('dic_id', $dic->id)
+            ->where('version_of', NULL)
+            ->whereIn('slug', $val_slugs)
+        ;
+
+        if ($with == 'all')
+            $with = ['meta', 'fields', 'textfields', 'seo', 'related_dicvals'];
+        else
+            $with = (array)$with;
+
+        if (count($with))
+            $values = $values->with($with);
+
+        $values = $values->get();
+
+        if (is_object($values) && $values->count()) {
+
+            if ($extract)
+                $values = DicLib::extracts($values, null, $unset, false);
+
+            foreach ($values as $v => $value) {
+                $values[$value->slug] = $value;
+                unset($values[$v]);
+            }
+        }
+
+        #Helper::tad($values);
+
+        return $values;
     }
 
 
