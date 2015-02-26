@@ -13,7 +13,7 @@ class ApplicationController extends BaseController {
         Route::group(array(), function() {
 
             Route::get('/news/{slug}', array('as' => 'app.new', 'uses' => __CLASS__.'@getAppNew'));
-            Route::get('/gallery/{slug}', array('as' => 'app.gallery', 'uses' => __CLASS__.'@getAppGallery'));
+            Route::get('/gallery/{id}', array('as' => 'app.gallery', 'uses' => __CLASS__.'@getAppGallery'));
         });
     }
 
@@ -37,15 +37,16 @@ class ApplicationController extends BaseController {
     }
 
 
-    public function postSendMessage() {
+    public function getAppGallery($id) {
 
-        #
+        $gallery = Dic::valueBySlugAndId('photo', $id, ['fields', 'textfields'], true, true, false, 2);
+        $gallery = DicLib::loadImages($gallery, 'image');
+        $gallery = DicLib::loadGallery($gallery, 'gallery');
+        #Helper::smartQueries(1);
+        #Helper::tad($gallery);
+
+        return View::make(Helper::layout('photo_one'), compact('gallery', 'slug'));
     }
 
-
-    public function postArchitectsCompetition() {
-
-        #
-    }
 
 }
