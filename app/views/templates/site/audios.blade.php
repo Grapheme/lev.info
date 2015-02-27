@@ -1,6 +1,6 @@
 <?
 /**
- * TITLE: Страница со списком фотографий
+ * TITLE: Страница со списком аудиозаписей
  * AVAILABLE_ONLY_IN_ADVANCED_MODE
  */
 ?>
@@ -10,7 +10,7 @@ $mon = Input::get('mon');
 
 $options = Dic::valuesBySlugs('options', ['facebook_widget', 'twitter_widget'], ['textfields']);
 
-$photos = Dic::valuesBySlug('photo', function($query) use ($year, $mon) {
+$audios = Dic::valuesBySlug('audio', function($query) use ($year, $mon) {
 
     $query->where('created_at', '<=', date('Y-m-d H:i:s'));
     $query->orderBy('created_at', 'DESC');
@@ -21,10 +21,9 @@ $photos = Dic::valuesBySlug('photo', function($query) use ($year, $mon) {
     }
 
 }, ['fields', 'textfields'], true, true, false, 2);
-$photos = DicLib::loadImages($photos, 'image');
-$photos = DicLib::loadGallery($photos, 'gallery');
+#$audios = DicLib::loadImages($audios, 'image');
 #Helper::smartQueries(1);
-#Helper::tad($photos);
+#Helper::tad($audios);
 
 $current_time =
         ($year && $mon && $year <= date('Y') && $year >= 2000 && (int)$mon >= 1 && (int)$mon <= 12)
@@ -51,7 +50,7 @@ $next_link_time->addMonth();
     <div class="h1-cont">
         <div class="container_12">
             <div class="grid_12">
-                <h1>Фото</h1>
+                <h1>Аудио</h1>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -66,41 +65,34 @@ $next_link_time->addMonth();
                     @if ($year && $mon)
                         {{ Helper::rdate('M Y', $year . '-' . $mon . '-' . date('d'), false, true) }}
                     @elseif (!Input::get('page') || Input::get('page') == 1)
-                        Последние фотографии
+                        Последние аудиозаписи
                     @else
                         &nbsp;
                     @endif
                 </div>
 
 
-                <div class="in-content">
-                    @if (isset($photos) && is_object($photos) && $photos->count())
-                        <ul class="album-list">
-                            @foreach ($photos as $photo)
-                                <li class="album-item photo-item"><a href="{{ URL::route('app.gallery', $photo->id) }}" style="background-image: url({{ is_object($photo->image) ? $photo->image->full() : '' }})" class="album-photo"></a>
-                                    <div class="album-info">
-                                        <div class="info-date">{{ Helper::rdate('j M Y', $photo->created_at) }}</div>
-                                        <div class="info-title"><a href="{{ URL::route('app.gallery', $photo->id) }}" class="title-link">{{ $photo->name }}</a></div>
-                                        @if (isset($photo->gallery) && is_object($photo->gallery) && isset($photo->gallery->photos) && is_object($photo->gallery->photos) && $photo->gallery->photos->count())
-                                            <div class="info-amount">{{ $photo->gallery->photos->count() }} фото</div>
-                                        @endif
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                        {{ $photos->appends(Input::all())->links() }}
-                    @else
-                        <div>
-                            <br/>
-                            Нет записей.
-                        </div>
-                    @endif
-                </div>
-
+                @if (isset($audios) && is_object($audios) && $audios->count())
+                    <ul class="main-feed">
+                        @foreach ($audios as $audio)
+                            <li class="feed-item js-audio-cont">
+                                <div class="feed-date">{{ Helper::rdate('j M Y', $audio->created_at) }}</div><a href="#" class="feed-title js-audio-open">{{ $audio->name }}</a>
+                                <div class="audio-cont js-audio">{{ $audio->embed }}</div>
+                            </li>
+                        @endforeach
+                    </ul>
+                    {{ $audios->appends(Input::all())->links() }}
+                @else
+                    <div>
+                        <br/>
+                        Нет записей.
+                    </div>
+                @endif
             </div>
+
             <div class="grid_4">
 
-                <div class="min-title">Фотоархив</div>
+                <div class="min-title">Видеоархив</div>
 
                 <div class="in-content album-filter">
                     <div class="filter-cont">

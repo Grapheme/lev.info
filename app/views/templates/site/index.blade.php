@@ -144,6 +144,7 @@ $videos = DicLib::loadImages($videos, 'image');
             </div>
             <div class="grid_4">
 
+                {{--ВИДЕО--}}
                 @if (isset($videos) && is_object($videos) && $videos->count())
                     <div class="min-title"><a href="{{ URL::route('page', 'video') }}">Видео</a></div>
                     <ul class="album-list search-albums">
@@ -186,17 +187,17 @@ $videos = DicLib::loadImages($videos, 'image');
         @if (isset($bill) && is_object($bill))
             <div data-law-id="{{ $bill->id }}" class="law-popup js-law-popup">
                 <div class="law-title">{{ $bill->name }}</div>
-                <div class="law-date">24 января 2015</div>
+                <div class="law-date">{{ Helper::rdate('j M Y', $bill->created_at) }}</div>
                 @if ($bill->meta_info)
-                <div class="law-info">
-                    {{ $bill->meta_info }}
-                </div>
+                    <div class="law-info">
+                        {{ $bill->meta_info }}
+                    </div>
                 @endif
                 <div class="law-text">
-                    @if (is_object($bill->file))
-                    <div class="info-block">
-                        <div class="upper-title">Законопроект</div><a href="{{ $bill->file->path }}" class="info-file"><span>PDF, {{ ceil(($bill->file->filesize)/1024) }} kB</span></a>
-                    </div>
+                    @if (isset($bill->file) && is_object($bill->file) && $bill->file->id)
+                        <div class="info-block">
+                            <div class="upper-title">Законопроект</div><a href="{{ $bill->file->path }}" class="info-file"><span>PDF, {{ ceil(($bill->file->filesize)/1024) }} kB</span></a>
+                        </div>
                     @endif
                     {{ $bill->fulltext }}
                 </div>

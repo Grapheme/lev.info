@@ -1,6 +1,6 @@
 <?
 /**
- * MENU_PLACEMENTS: main_menu=Основное меню|footer_menu=Меню в подвале
+ * MENU_PLACEMENTS: main_menu=Основное меню|footer_menu=Меню в подвале|biography_menu=Меню на страницах биографии
  */
 ?>
 <!DOCTYPE html>

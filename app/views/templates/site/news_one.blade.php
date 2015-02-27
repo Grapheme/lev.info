@@ -1,7 +1,7 @@
 <?
 /**
  * TITLE: Страница одной новости
- * AVAILABLE_ONLY_IN_ADVANCED_MODE
+ * TEMPLATE_IS_NOT_SETTABLE
  */
 ?>
 <?

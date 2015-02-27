@@ -1,7 +1,7 @@
 <?
 /**
- * TITLE: Страница со списком фотографий
- * AVAILABLE_ONLY_IN_ADVANCED_MODE
+ * TITLE: Страница одной фотографии
+ * TEMPLATE_IS_NOT_SETTABLE
  */
 ?>
 <?
