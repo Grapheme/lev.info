@@ -14,9 +14,9 @@
                 {{ Menu::placement('main_menu') }}
             </nav>
             <div class="search-block">
-                <form action="search.html">
+                <form action="{{ URL::route('page', 'search') }}" method="GET">
                     <div class="search-cont">
-                        <input placeholder="Поиск по сайту" class="us-input search-input">
+                        <input placeholder="Поиск по сайту" name="q" value="{{ Input::get('q') }}" class="us-input search-input">
                         <button class="search-btn"></button>
                     </div>
                 </form>
