@@ -1,4 +1,4 @@
-.pagination-block
+//- .pagination-block
     a(href="#").pag-arrow.left
     a(href="#").pag-arrow.right
     ul.pag-numbers
@@ -7,3 +7,16 @@
         each i in [2,3,4,5]
             li
                 a(href="#") #{i}
+ul.pagination
+    li.disabled
+        span «
+    li.active
+        span 1
+    li
+        a(href='http://levichev.dev/news?year=2015&mon=02&page=2') 2
+    li
+        a(href='http://levichev.dev/news?year=2015&mon=02&page=2') 3
+    li
+        a(href='http://levichev.dev/news?year=2015&mon=02&page=2') 4
+    li
+        a(href='http://levichev.dev/news?year=2015&mon=02&page=2', rel='next') »

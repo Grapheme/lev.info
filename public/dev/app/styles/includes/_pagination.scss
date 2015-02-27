@@ -1,4 +1,6 @@
-.pagination-block {
+.pagination {
+    margin: 0;
+    padding: 0;
     position: relative;
     height: 70px;
     line-height: 70px;
@@ -6,7 +8,7 @@
     border-bottom: 1px solid #cccccc;
     text-align: center;
 
-    .pag-arrow {
+    li:first-child, li:last-child {
         position: absolute;
         display: inline-block;
         top: 0;
@@ -19,15 +21,30 @@
         transition: color .2s ease;
         font-size: 35px;
 
+        a, span {
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            color: transparent;
+        }
+
         &:hover {
             color: #004e9d;
+        }
+        &.disabled {
+            &:hover {
+                color: inherit;
+            }
         }
 
         &:before {
             @extend .fi;
         }
 
-        &.left {
+        &:first-child {
             left: 0;
 
             &:before {
@@ -35,7 +52,7 @@
             }
         }
 
-        &.right {
+        &:last-child {
             right: 0;
 
             &:before {
@@ -44,7 +61,7 @@
         }
     }
 
-    .pag-numbers {
+    li:not(:first-child):not(:last-child) {
         margin: 0;
         padding: 0;
         list-style: none;
@@ -52,29 +69,26 @@
         vertical-align: middle;
         line-height: normal;
 
-        li {
+        a, span {
             display: inline-block;
-            vertical-align: middle;
+            padding: 0 10px;
+            color: #202020;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color .2s ease;
+        }
 
-            a {
-                display: inline-block;
-                padding: 0 10px;
-                color: #202020;
-                font-size: 18px;
-                text-decoration: none;
-                transition: color .2s ease;
-
-                &:hover {
-                    color: #004e9d;
-                }
+        a {
+            &:hover {
+                color: #004e9d;
             }
+        }
 
-            &.active {
-                font-weight: 700;
+        &.active {
+            font-weight: 700;
 
-                a:hover {
-                    color: inherit;
-                }
+            a:hover {
+                color: inherit;
             }
         }
     }
