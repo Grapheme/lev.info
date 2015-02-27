@@ -25,50 +25,53 @@
     <div class="main-content">
         <div class="container_12">
             <div class="grid_8">
-                <div class="min-title">Обратная связь</div>
-                <div class="in-content">
-
+              <div class="min-title">Обратная связь</div>
+              <div class="in-content">
+                <p class="contact-title">
                     {{ $page->block('description') }}
-
-                    <div class="contact-form">
-                        <form>
-                            <textarea placeholder="Ваше сообщение" class="us-input js-autosize"></textarea>
-                            <table class="form-table">
-                                <tr>
-                                    <td class="table-text">Представьтесь</td>
-                                    <td>
-                                        <input class="us-input">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-text">Электронная почта</td>
-                                    <td>
-                                        <input class="us-input">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-text">Ваш телефон</td>
-                                    <td>
-                                        <input class="us-input">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-text">Прикрепить файлы</td>
-                                    <td class="table-file">
-                                        <input type="file">
-                                        <div class="form-file-desc">Допустимы форматы rtf, doc, docx, pdf, jpg</div>
-                                    </td>
-                                </tr>
-                                <tr class="form-btn-cont">
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <button class="us-btn">Отправить форму</button>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
+                </p>
+                <div class="contact-form js-form-cont">
+                  <div style="display: none;" class="js-form-success">Ваше сообщение успешно отправленно.</div>
+                  <form action="json/contact.json" method="GET" class="js-contact-form">
+                    <div class="rel">
+                      <textarea placeholder="Ваше сообщение" name="message" class="us-input js-autosize"></textarea>
                     </div>
+                    <table class="form-table">
+                      <tr>
+                        <td class="table-text">Представтесь</td>
+                        <td>
+                          <input name="name" class="us-input">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="table-text">Электронная почта</td>
+                        <td>
+                          <input name="email" class="us-input">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="table-text">Ваш телефон</td>
+                        <td>
+                          <input name="phone" class="us-input">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="table-text">Прикрепить файлы</td>
+                        <td class="table-file">
+                          <input type="file" name="file">
+                          <div class="form-file-desc">Допустимы форматы rtf, doc, docx, pdf, jpg</div>
+                        </td>
+                      </tr>
+                      <tr class="form-btn-cont">
+                        <td>&nbsp;</td>
+                        <td>
+                          <button type="submit" class="us-btn">Отправить форму</button><span style="display: none;" class="form-error js-form-error">Произошла ошибка,<br>попробуйте позже</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </form>
                 </div>
+              </div>
             </div>
             <div class="grid_4 contacts-right">
                 <div class="min-title">Приемная</div>
