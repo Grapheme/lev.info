@@ -241,6 +241,76 @@ levinfo.newsText = function() {
     });
     //levinfo.fancybox();
 }
+levinfo.contactForm = function() {
+    jQuery.extend(jQuery.validator.messages, {
+            required: "Это поле необходимо заполнить.",
+            remote: "Пожалуйста, введите правильное значение.",
+            email: "Пожалуйста, введите корретный адрес электронной почты.",
+            url: "Пожалуйста, введите корректный URL.",
+            date: "Пожалуйста, введите корректную дату.",
+            dateISO: "Пожалуйста, введите корректную дату в формате ISO.",
+            number: "Пожалуйста, введите число.",
+            digits: "Пожалуйста, вводите только цифры.",
+            creditcard: "Пожалуйста, введите правильный номер кредитной карты.",
+            equalTo: "Пожалуйста, введите такое же значение ещё раз.",
+            accept: "Пожалуйста, выберите файл с правильным расширением.",
+            maxlength: jQuery.validator.format("Пожалуйста, введите не больше {0} символов."),
+            minlength: jQuery.validator.format("Пожалуйста, введите не меньше {0} символов."),
+            rangelength: jQuery.validator.format("Пожалуйста, введите значение длиной от {0} до {1} символов."),
+            range: jQuery.validator.format("Пожалуйста, введите число от {0} до {1}."),
+            max: jQuery.validator.format("Пожалуйста, введите число, меньшее или равное {0}."),
+            min: jQuery.validator.format("Пожалуйста, введите число, большее или равное {0}.")
+    });
+
+    $(".js-contact-form").validate({
+        rules: {
+            name: "required",
+            message: "required",
+            email: {
+                required: function(element) {
+                    return $('[name="phone"]').val().length == 0;
+                },
+                email: true
+            },
+            phone: {
+                required: function(element) {
+                    return $('[name="email"]').val().length == 0;
+                }
+            }
+        },
+        submitHandler: function(form) {
+            var options = { 
+                beforeSubmit: function(){
+                    $('.js-form-error').hide();
+                    $(form).find('[type="submit"]').addClass('loading')
+                        .attr('disabled', 'disabled');
+                }, 
+                success: function(data){
+                    if(data.status) {
+                        $('.js-form-success').fadeIn();
+                        setTimeout(function(){
+                            $('.js-form-cont').slideUp();
+                        }, 3000);
+                    } else {
+                        $('.js-form-error').show();
+                    }
+                    $(form).find('[type="submit"]').removeClass('loading')
+                        .removeAttr('disabled');
+                },
+                error: function() {
+                    $('.js-form-error').show();
+                    $(form).find('[type="submit"]').removeClass('loading')
+                        .removeAttr('disabled');
+                }
+            };
+            $(form).ajaxSubmit(options);
+        }
+    });
+    $('[name="phone"], [name="email"]').on('input', function(){
+        if($('#phone-error').is(':visible') && $('#email-error').is(':visible'))
+            $(".js-contact-form").valid();
+    });
+}
 levinfo.main = function() {
     levinfo.selects();
     if($('.js-fancybox').length)
@@ -257,6 +327,8 @@ levinfo.main = function() {
         levinfo.lawPopup();
     if($('.js-news-text').length)
         levinfo.newsText();
+    if($('.js-contact-form').length)
+        levinfo.contactForm();
     $('.js-autosize').autosize();
 }
 $(function(){

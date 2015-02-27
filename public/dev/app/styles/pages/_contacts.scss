@@ -4,6 +4,7 @@
 }
 
 .contact-form {
+    position: relative;
     margin-top: 25px;
 
     textarea.us-input {
@@ -23,6 +24,17 @@
 
         tr {
             height: 70px;
+
+            td {
+                position: relative;
+            }
+        }
+
+        .form-error {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 15px;
+            font-size: 15px;
         }
 
         .table-text {

@@ -15,31 +15,34 @@ block content
                 .min-title Обратная связь
                 .in-content
                     p.contact-title Чтобы напрямую обратиться ко мне, Вы можете воспользоваться формой для обратной связи, расположенной ниже, или обратиться в мою приемную. Все обращения граждан рассматриваются лично мной.
-                    .contact-form
-                        form
-                            textarea.us-input.js-autosize(placeholder="Ваше сообщение")
+                    .contact-form.js-form-cont
+                        .js-form-success(style="display: none;") Ваше сообщение успешно отправленно.
+                        form(class="js-contact-form" action="json/contact.json" method="GET")
+                            .rel
+                                textarea.us-input.js-autosize(placeholder="Ваше сообщение" name="message")
                             table.form-table
                                 tr
                                     td.table-text Представтесь
                                     td
-                                        input.us-input
+                                        input.us-input(name="name")
                                 tr
                                     td.table-text Электронная почта
                                     td
-                                        input.us-input
+                                        input.us-input(name="email")
                                 tr
                                     td.table-text Ваш телефон
                                     td
-                                        input.us-input
+                                        input.us-input(name="phone")
                                 tr
                                     td.table-text Прикрепить файлы
                                     td.table-file
-                                        input(type="file")
+                                        input(type="file" name="file")
                                         .form-file-desc Допустимы форматы rtf, doc, docx, pdf, jpg
                                 tr.form-btn-cont
                                     td &nbsp;
                                     td
-                                        button.us-btn Отправить форму
+                                        button(type="submit").us-btn Отправить форму
+                                        span.form-error.js-form-error(style="display: none;") Произошла ошибка,<br>попробуйте позже
             .grid_4.contacts-right
                 .min-title Приемная
                 .in-content

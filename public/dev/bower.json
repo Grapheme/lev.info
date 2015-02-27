@@ -8,6 +8,8 @@
     "jquery-ui": "~1.11.2",
     "fancybox": "~2.1.5",
     "jquery-autosize": "~1.18.17",
-    "fotorama": "~4.6.3"
+    "fotorama": "~4.6.3",
+    "jquery-form": "~3.46.0",
+    "jquery-validation": "~1.13.1"
   }
 }
