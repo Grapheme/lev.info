@@ -32,9 +32,9 @@
                 </p>
                 <div class="contact-form js-form-cont">
                   <div style="display: none;" class="js-form-success">Ваше сообщение успешно отправленно.</div>
-                  <form action="json/contact.json" method="GET" class="js-contact-form">
+                  <form action="{{ URL::route('app.send-message') }}" method="POST" class="js-contact-form">
                     <div class="rel">
-                      <textarea placeholder="Ваше сообщение" name="message" class="us-input js-autosize"></textarea>
+                      <textarea placeholder="Ваше сообщение" name="content" class="us-input js-autosize"></textarea>
                     </div>
                     <table class="form-table">
                       <tr>
