@@ -16,7 +16,7 @@ $slides = DicLib::loadImages($slides, 'image');
 
 $news = Dic::valuesBySlug('news', function($query) {
     $query->filter_by_field('published_at', '<=', date('Y-m-d H:i:s'));
-    $query->order_by_field('published_at', 'DESC'));
+    $query->order_by_field('published_at', 'DESC');
     $query->take(5);
 }, ['fields', 'textfields']);
 $news = DicLib::loadImages($news, 'image');
