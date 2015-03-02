@@ -25,7 +25,7 @@ $results_counts['video'] = isset($results['video']['matches']) ? count($results[
 /**
 * Собираем dicval_id для получения одним запросом
 */
-$dicvals_ids = array_unique(array_merge( (array)array_keys($results['news']['matches']), @(array)array_keys($results['photo']['matches']), @(array)array_keys($results['video']['matches']) ));
+$dicvals_ids = array_unique(array_merge( @(array)array_keys($results['news']['matches']), @(array)array_keys($results['photo']['matches']), @(array)array_keys($results['video']['matches']) ));
 #Helper::d($dicvals_ids);
 
 
