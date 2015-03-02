@@ -32,12 +32,13 @@ $dicvals_ids = array_unique(array_merge( @(array)array_keys($results['news']['ma
 /**
 * Получаем все найденные значения DicVal одним запросом
 */
+$dicvals = NULL;
 if (count($dicvals_ids)) {
     $dicvals = DicVal::whereIn('id', $dicvals_ids)->get();
     $dicvals->load('dic', 'meta', 'fields', 'textfields');
     $dicvals = DicVal::extracts($dicvals, 1);
 } else {
-    $dicvals = array();
+#    $dicvals = array();
 }
 $dicvals = DicLib::extracts($dicvals, null, 1, 1);
 $dicvals = DicLib::loadImages($dicvals, ['image']);
