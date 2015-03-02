@@ -13,7 +13,7 @@ $sphinx_match_mode = \Sphinx\SphinxClient::SPH_MATCH_ANY;
  * news
  */
 $results['news'] = SphinxSearch::search($q, 'levichev_news_index')->setMatchMode($sphinx_match_mode)->query();
-$results_counts['news'] = count($results['news']['matches']);
+$results_counts['news'] = isset($results['news']['matches']) ? count($results['news']['matches']) : 0;
 $results['photo'] = SphinxSearch::search($q, 'levichev_photo_index')->setMatchMode($sphinx_match_mode)->query();
 $results_counts['photo'] = isset($results['photo']['matches']) ? count($results['photo']['matches']) : 0;
 $results['video'] = SphinxSearch::search($q, 'levichev_video_index')->setMatchMode($sphinx_match_mode)->query();
