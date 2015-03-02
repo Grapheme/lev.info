@@ -100,7 +100,7 @@ if (@count(array_keys($results['news']['matches']))) {
             <div class="search-results">
                 <div class="grid_8">
                     <div class="min-title">&nbsp;</div>
-                    @if (count($results['news']['matches']))
+                    @if (@count($results['news']['matches']))
                         <ul class="main-feed">
                             @foreach ($results['news']['matches'] as $new_id => $null)
                                 <?
