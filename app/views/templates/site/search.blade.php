@@ -50,7 +50,7 @@ $excerpts = array();
 /**
  * Поисковые подсказки - projects
  */
-if (count(array_keys($results['news']['matches']))) {
+if (@count(array_keys($results['news']['matches']))) {
     $docs = array();
     foreach (array_keys($results['news']['matches']) as $dicval_id) {
         $dicval = $dicvals[$dicval_id];
