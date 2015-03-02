@@ -23,6 +23,10 @@ class DicLib extends BaseController {
      */
     public static function extracts($elements, $field = null, $unset = false, $extract_ids = true) {
 
+        if (!is_object($elements)) {
+            return $elements;
+        }
+
         #$return = new Collection;
         $return = [];
         #Helper::dd($return);
