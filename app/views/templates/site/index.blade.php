@@ -70,7 +70,7 @@ $videos = DicLib::loadImages($videos, 'image');
                     <div class="index-slider js-slider"><a href="#" class="index-arrow a-left js-prev"></a><a href="#" class="index-arrow a-right js-next"></a>
                         <div class="js-fotorama">
                             @foreach ($slides as $slide)
-                                <div style="background-image: url({{ is_object($slide->image) ? $slide->image->full() : '' }})" data-caption="Николай Левичев подвел итоги 2014 года" class="fororama-slide">&nbsp;<a href="{{ $slide->link ?: '#' }}"></a></div>
+                                <div style="background-image: url({{ is_object($slide->image) ? $slide->image->full() : '' }})" data-caption="{{ $slide->name }}" class="fororama-slide">&nbsp;<a href="{{ $slide->link ?: '#' }}"></a></div>
                             @endforeach
                         </div>
                     </div>
