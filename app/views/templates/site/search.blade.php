@@ -36,13 +36,13 @@ $dicvals = NULL;
 if (count($dicvals_ids)) {
     $dicvals = DicVal::whereIn('id', $dicvals_ids)->get();
     $dicvals->load('dic', 'meta', 'fields', 'textfields');
-    $dicvals = DicVal::extracts($dicvals, 1);
+    $dicvals = DicVal::extracts($dicvals, null, 1, 1);
+    $dicvals = DicLib::loadImages($dicvals, ['image']);
+    $dicvals = DicLib::loadGallery($dicvals, ['gallery']);
 } else {
 #    $dicvals = array();
 }
-$dicvals = DicLib::extracts($dicvals, null, 1, 1);
-$dicvals = DicLib::loadImages($dicvals, ['image']);
-$dicvals = DicLib::loadGallery($dicvals, ['gallery']);
+#$dicvals = DicLib::extracts($dicvals, null, 1, 1);
 #Helper::tad($dicvals);
 
 $excerpts = array();
