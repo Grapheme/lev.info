@@ -221,6 +221,10 @@ levinfo.newsText = function() {
         $(this).hide();
         var this_src = $(this).attr('src');
         var this_alt = $(this).attr('alt');
+        var alt_str = '';
+        if(this_alt) {
+            var alt_str = '<div class="img-desc">' + this_alt + '</div>';
+        }
         var parent_p = $(this).parent('p');
         var toP;
         if(parent_p.prev('p').length) {
@@ -230,7 +234,7 @@ levinfo.newsText = function() {
         }
         var html = '<div class="news-img js-fancybox" rel="gallery" href="' + this_src + '" title="' + this_alt + '">\
                         <img class="img-photo" src="' + this_src + '" alt="' + this_alt + '">\
-                        <div class="img-desc">' + this_alt + '</div>\
+                        ' + alt_str + '\
                     </div>';
         toP.prepend(html);
         toP.append('<div class="clearfix"></div>');
@@ -311,6 +315,15 @@ levinfo.contactForm = function() {
             $(".js-contact-form").valid();
     });
 }
+levinfo.sharing = function() {
+    $('.js-share').on('click', function(){
+        var newWin = window.open($(this).attr('href'),
+           "Поделиться",
+           "width=420,height=230,resizable=yes,scrollbars=yes,status=yes"
+        );
+        return false;
+    });
+}
 levinfo.main = function() {
     levinfo.selects();
     if($('.js-fancybox').length)
@@ -329,6 +342,8 @@ levinfo.main = function() {
         levinfo.newsText();
     if($('.js-contact-form').length)
         levinfo.contactForm();
+    if($('.js-share').length)
+        levinfo.sharing();
     $('.js-autosize').autosize();
 }
 $(function(){

@@ -12,11 +12,11 @@ $options = Dic::valuesBySlugs('options', ['facebook_link', 'twitter_link', 'foot
             <ul class="footer-ul">
                 <li>
                     <div class="ul-image"></div>
-                    <a href="#" class="ul-text">Партия Справедливая Россия</a>
+                    <a target="_blank" href="http://www.spravedlivo.ru/" class="ul-text">Партия Справедливая Россия</a>
                 </li>
                 <li>
                     <div class="ul-image"></div>
-                    <a href="#" class="ul-text">Палата депутатов партии Справедливая Россия</a>
+                    <a target="_blank" href="http://www.srduma.ru/" class="ul-text">Палата депутатов партии Справедливая Россия</a>
                 </li>
             </ul>
             @if (isset($options['footer_contacts']) && is_object($options['footer_contacts']) && $options['footer_contacts']->value)
@@ -33,10 +33,10 @@ $options = Dic::valuesBySlugs('options', ['facebook_link', 'twitter_link', 'foot
             </div>
             <ul class="footer-soc">
                 @if (isset($options['twitter_link']) && is_object($options['twitter_link']) && $options['twitter_link']->value)
-                    <li><a href="{{ $options['twitter_link']->value }}" class="soc-twitter"></a></li>
+                    <li><a target="_blank" href="{{ $options['twitter_link']->value }}" class="soc-twitter"></a></li>
                 @endif
                 @if (isset($options['facebook_link']) && is_object($options['facebook_link']) && $options['facebook_link']->value)
-                    <li><a href="{{ $options['facebook_link']->value }}" class="soc-facebook"></a></li>
+                    <li><a target="_blank" href="{{ $options['facebook_link']->value }}" class="soc-facebook"></a></li>
                 @endif
             </ul>
         </div>
