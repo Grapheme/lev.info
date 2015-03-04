@@ -81,7 +81,11 @@ $next_link_time->addMonth();
                         @foreach ($news as $new)
                         <li class="feed-item"><a href="{{ URL::route('app.new', $new->slug) }}" class="feed-title">{{ $new->name }}</a>
                             <div class="feed-date">{{ Helper::rdate('j M Y', $new->published_at) }}</div>
-                            <div class="feed-desc"><img src="{{ is_object($new->image) ? $new->image->full() : '' }}"><span>{{ $new->preview }}</span>
+                            <div class="feed-desc">
+                                @if (is_object($new->image))
+                                    <img src="{{ $new->image->full() }}">
+                                @endif
+                                <span>{{ $new->preview }}</span>
                                 <div class="clearfix"></div>
                             </div>
                         </li>

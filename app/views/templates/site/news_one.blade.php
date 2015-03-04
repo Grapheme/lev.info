@@ -40,7 +40,11 @@ $seo = $new->seo;
                             {{ $new->content }}
                         </div>
                     </div>
-                    <div class="share-block"><span>Поделиться</span><a href="#" class="soc-twitter"></a><a href="#" class="soc-facebook"></a></div>
+                    <div class="share-block">
+                        <span>Поделиться</span>
+                        <a href="http://twitter.com/share?url={{ Request::url() }}&text={{ urlencode($new->name) }}" class="js-share soc-twitter"></a>
+                        <a href="http://www.facebook.com/sharer.php?u={{ Request::url() }}&t={{ urlencode($new->name) }}" class="js-share soc-facebook"></a>
+                    </div>
                 </div>
             </div>
 
