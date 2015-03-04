@@ -15,7 +15,7 @@ $publications = DicLib::loadImages($publications, 'image');
 $books = Dic::valuesBySlug('books', function($query) {
     $query->where('created_at', '<=', date('Y-m-d H:i:s'));
     #$query->orderBy('created_at', 'DESC');
-    $query->orderBy('lft', 'DESC');
+    $query->orderBy('lft', 'ASC');
 }, ['fields', 'textfields'], true, true, false);
 $books = DicLib::loadImages($books, 'image');
 $books = DicLib::loadFiles($books, 'file');
