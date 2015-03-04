@@ -12,11 +12,11 @@ $options = Dic::valuesBySlugs('options', ['facebook_link', 'twitter_link', 'foot
             <ul class="footer-ul">
                 <li>
                     <div class="ul-image"></div>
-                    <a href="#" class="ul-text">Партия Справедливая Россия</a>
+                    <a href="http://www.spravedlivo.ru/" class="ul-text">Партия Справедливая Россия</a>
                 </li>
                 <li>
                     <div class="ul-image"></div>
-                    <a href="#" class="ul-text">Палата депутатов партии Справедливая Россия</a>
+                    <a href="http://www.srduma.ru/" class="ul-text">Палата депутатов партии Справедливая Россия</a>
                 </li>
             </ul>
             @if (isset($options['footer_contacts']) && is_object($options['footer_contacts']) && $options['footer_contacts']->value)
