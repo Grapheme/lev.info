@@ -16,7 +16,7 @@ $seo = $new->seo;
 @section('style')
     <meta property="og:title" content="{{ $new->name }}">
     <meta property="og:description" content="{{ $new->preview }}">
-    <meta property="og:image" content="{{ $new->image }}">
+    <meta property="og:image" content="{{ $new->image->full() }}">
 @stop
 
 
