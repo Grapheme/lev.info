@@ -6,6 +6,7 @@
 ?>
 <?
 $options = Dic::valuesBySlugs('options', ['facebook_widget', 'twitter_widget'], ['textfields']);
+$seo = $new->seo;
 ?>
 @extends(Helper::layout())
 
