@@ -6,6 +6,9 @@
 ?>
 <?
 $options = Dic::valuesBySlugs('options', ['facebook_widget', 'twitter_widget'], ['textfields']);
+
+$page_title = $gallery->name;
+$seo = $gallery->seo;
 ?>
 @extends(Helper::layout())
 
