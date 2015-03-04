@@ -51,7 +51,7 @@ $audios = Dic::valuesBySlug('audio', function($query) {
 $videos = Dic::valuesBySlug('video', function($query) {
     $query->orderBy('created_at', 'DESC');
     $query->take(1);
-}, ['textfields']);
+}, ['fields', 'textfields']);
 $videos = DicLib::loadImages($videos, 'image');
 #Helper::tad($videos);
 ?>
@@ -156,7 +156,7 @@ $videos = DicLib::loadImages($videos, 'image');
                             ?>
                             <li class="album-item video-item"><a href="{{ $embed_link }}" style="background-image: url({{ is_object($video->image) ? $video->image->full() : '' }})" class="js-fancybox album-photo fancybox.iframe"></a>
                                 <div class="album-info">
-                                    <div class="info-date"><span>{{ Helper::rdate('j M Y', $audio->created_at) }}</span></div>
+                                    <div class="info-date"><span>{{ Helper::rdate('j M Y', $video->created_at) }}</span></div>
                                     <div class="info-title"><a href="{{ $embed_link }}" class="js-fancybox title-link fancybox.iframe">{{ $video->name }}</a></div>
                                 </div>
                             </li>
