@@ -31,7 +31,7 @@
                     {{ $page->block('description') }}
                 </p>
                 <div class="contact-form js-form-cont">
-                  <div style="display: none;" class="js-form-success">Ваше сообщение успешно отправленно.</div>
+                  <div style="display: none;" class="js-form-success">Ваше сообщение успешно отправлено</div>
                   <form action="{{ URL::route('app.send-message') }}" method="POST" class="js-contact-form">
                     <div class="rel">
                       <textarea placeholder="Ваше сообщение" name="content" class="us-input js-autosize"></textarea>
