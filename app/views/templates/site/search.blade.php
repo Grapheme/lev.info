@@ -153,7 +153,7 @@ if (@count(array_keys($results['news']['matches']))) {
                                 continue;
                             $embed_link = str_replace('/watch?v=', '/embed/', $video->youtube_link);
                             ?>
-                            <li class="album-item video-item"><a href="{{ $embed_link }}" style="background-image: url({{ is_object($video->image) ? $photo->image->thumb() : '' }})" class="js-fancybox album-photo fancybox.iframe"></a>
+                            <li class="album-item video-item"><a href="{{ $embed_link }}" style="background-image: url({{ is_object($video->image) ? $video->image->thumb() : '' }})" class="js-fancybox album-photo fancybox.iframe"></a>
                                 <div class="album-info">
                                     <div class="info-date"><span class="info-type">Видео</span><span>{{ Helper::rdate('j M Y', $video->created_at) }}</span></div>
                                     <div class="info-title"><a href="{{ $embed_link }}" class="title-link">{{ $video->name }}</a></div>

@@ -39,9 +39,9 @@ if (isset($page) && is_object($page) && isset($page->seo) && is_object($page->se
         $page_keywords = Config::get('site.seo.default_keywords');
 }
 ?>
-@section('title'){{{ $page_title }}}@stop
-@section('description'){{{ $page_description }}}@stop
-@section('keywords'){{{ $page_keywords }}}@stop
+@section('title'){{{ @$page_title }}}@stop
+@section('description'){{{ @$page_description }}}@stop
+@section('keywords'){{{ @$page_keywords }}}@stop
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>@yield('title')</title>
