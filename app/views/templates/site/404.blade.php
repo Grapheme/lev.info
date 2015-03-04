@@ -4,6 +4,9 @@
  * AVAILABLE_ONLY_IN_ADVANCED_MODE
  */
 ?>
+<?
+$page_title = 'Страница не найдена';
+?>
 @extends(Helper::layout())
 
 
