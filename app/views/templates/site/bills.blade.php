@@ -12,7 +12,7 @@ $bills = Dic::valuesBySlug('bills', function($query) {
     $query->where('created_at', '<=', date('Y-m-d H:i:s'));
     $query->orderBy('created_at', 'DESC');
 
-}, ['fields', 'textfields'], true, true, false, 2);
+}, ['fields', 'textfields'], true, true, false, 10);
 #$bills = DicLib::loadImages($bills, 'image');
 $bills = DicLib::loadFiles($bills, 'file');
 #Helper::smartQueries(1);

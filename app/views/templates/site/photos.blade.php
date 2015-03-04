@@ -19,8 +19,9 @@ $photos = Dic::valuesBySlug('photo', function($query) use ($year, $mon) {
         $query->where('created_at', '<=', $year . '-' . $mon . '-31 23:59:59');
         $query->where('created_at', '>', $year . '-' . $mon . '-01 00:00:00');
     }
+    #$query->take(10);
 
-}, ['fields', 'textfields'], true, true, false, 2);
+}, ['fields', 'textfields'], true, true, false, 10);
 $photos = DicLib::loadImages($photos, 'image');
 $photos = DicLib::loadGallery($photos, 'gallery');
 #Helper::smartQueries(1);

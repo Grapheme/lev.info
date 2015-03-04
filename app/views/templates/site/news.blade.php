@@ -23,7 +23,7 @@ $news = Dic::valuesBySlug('news', function($query) use ($year, $mon) {
         $query->filter_by_field(DB::raw("'published_at'"), '>', $year . '-' . $mon . '-01');
     }
 
-}, ['fields', 'textfields'], true, true, false, 2);
+}, ['fields', 'textfields'], true, true, false, 10);
 $news = DicLib::loadImages($news, 'image');
 #Helper::smartQueries(1);
 #Helper::tad($news);

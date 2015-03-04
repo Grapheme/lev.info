@@ -20,7 +20,7 @@ $audios = Dic::valuesBySlug('audio', function($query) use ($year, $mon) {
         $query->where('created_at', '>', $year . '-' . $mon . '-01 00:00:00');
     }
 
-}, ['fields', 'textfields'], true, true, false, 2);
+}, ['fields', 'textfields'], true, true, false, 10);
 #$audios = DicLib::loadImages($audios, 'image');
 #Helper::smartQueries(1);
 #Helper::tad($audios);
