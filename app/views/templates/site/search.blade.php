@@ -48,20 +48,53 @@ if (count($dicvals_ids)) {
 $excerpts = array();
 
 /**
- * Поисковые подсказки - projects
- */
+* Поисковые подсказки - projects
+*/
 if (@count(array_keys($results['news']['matches']))) {
-    $docs = array();
-    foreach (array_keys($results['news']['matches']) as $dicval_id) {
-        $dicval = $dicvals[$dicval_id];
-        $line = Helper::multiSpace(strip_tags($dicval->name)) . "\n" . Helper::multiSpace(strip_tags($dicval->content)) . "\n" . Helper::multiSpace(strip_tags($dicval->preview));
-        $docs[$dicval_id] = trim($line);
-    }
-    #Helper::d($docs);
-    $excerpts['news'] = Helper::buildExcerpts($docs, 'levichev_news_index', $q, array('before_match' => '<mark>', 'after_match' => '</mark>'));
-} else {
-    $excerpts['news'] = array();
+$docs = array();
+foreach (array_keys($results['news']['matches']) as $dicval_id) {
+$dicval = $dicvals[$dicval_id];
+$line = Helper::multiSpace(strip_tags($dicval->name)) . "\n" . Helper::multiSpace(strip_tags($dicval->content)) . "\n" . Helper::multiSpace(strip_tags($dicval->preview));
+$docs[$dicval_id] = trim($line);
 }
+#Helper::d($docs);
+$excerpts['news'] = Helper::buildExcerpts($docs, 'levichev_news_index', $q, array('before_match' => '<mark>', 'after_match' => '</mark>'));
+} else {
+$excerpts['news'] = array();
+}
+
+/**
+* Поисковые подсказки - photo
+*/
+if (@count(array_keys($results['photo']['matches']))) {
+$docs = array();
+foreach (array_keys($results['photo']['matches']) as $dicval_id) {
+$dicval = $dicvals[$dicval_id];
+$line = Helper::multiSpace(strip_tags($dicval->name));
+$docs[$dicval_id] = trim($line);
+}
+#Helper::d($docs);
+$excerpts['photo'] = Helper::buildExcerpts($docs, 'levichev_photo_index', $q, array('before_match' => '<mark>', 'after_match' => '</mark>'));
+} else {
+$excerpts['photo'] = array();
+}
+
+/**
+* Поисковые подсказки - video
+*/
+if (@count(array_keys($results['video']['matches']))) {
+$docs = array();
+foreach (array_keys($results['video']['matches']) as $dicval_id) {
+$dicval = $dicvals[$dicval_id];
+$line = Helper::multiSpace(strip_tags($dicval->name));
+$docs[$dicval_id] = trim($line);
+}
+#Helper::d($docs);
+$excerpts['video'] = Helper::buildExcerpts($docs, 'levichev_video_index', $q, array('before_match' => '<mark>', 'after_match' => '</mark>'));
+} else {
+$excerpts['video'] = array();
+}
+
 #Helper::dd($excerpts);
 
 ?>
@@ -136,7 +169,9 @@ if (@count(array_keys($results['news']['matches']))) {
                             <li class="album-item photo-item"><a href="{{ URL::route('app.gallery', $photo->id) }}" style="background-image: url({{ is_object($photo->image) ? $photo->image->thumb() : '' }})" class="album-photo"></a>
                                 <div class="album-info">
                                     <div class="info-date"><span class="info-type">Фото</span><span>{{ Helper::rdate('j M Y', $photo->created_at) }}</span></div>
-                                    <div class="info-title"><a href="{{ URL::route('app.gallery', $photo->id) }}" class="title-link">{{ $photo->name }}</a></div>
+                                    <div class="info-title"><a href="{{ URL::route('app.gallery', $photo->id) }}" class="title-link">
+                                            {{ @$excerpts['photo'][$photo->id] }}
+                                        </a></div>
                                     @if (isset($photo->gallery) && is_object($photo->gallery) && isset($photo->gallery->photos) && is_object($photo->gallery->photos))
                                         <div class="info-amount">{{ count($photo->gallery->photos) }} фото</div>
                                     @endif
@@ -156,7 +191,9 @@ if (@count(array_keys($results['news']['matches']))) {
                             <li class="album-item video-item"><a href="{{ $embed_link }}" style="background-image: url({{ is_object($video->image) ? $video->image->thumb() : '' }})" class="js-fancybox album-photo fancybox.iframe"></a>
                                 <div class="album-info">
                                     <div class="info-date"><span class="info-type">Видео</span><span>{{ Helper::rdate('j M Y', $video->created_at) }}</span></div>
-                                    <div class="info-title"><a href="{{ $embed_link }}" class="title-link">{{ $video->name }}</a></div>
+                                    <div class="info-title"><a href="{{ $embed_link }}" class="title-link">
+                                            {{ @$excerpts['video'][$video->id] }}
+                                        </a></div>
                                 </div>
                             </li>
                         @endforeach
