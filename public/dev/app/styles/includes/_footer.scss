@@ -50,6 +50,11 @@
 		float: right;
 		color: #fff;
 		line-height: 1.6;
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
 	}
 
 	.footer-bottom {
