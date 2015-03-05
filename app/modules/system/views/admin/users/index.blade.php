@@ -20,8 +20,9 @@
     			<tbody>
     			@foreach($users as $user)
                     <?
-                    #if ($user->id == 1 && !Allow::superuser())
-                    #    continue;
+                    #Helper::ta($user);
+                    if ($user->group_id == 1 && !Allow::superuser())
+                        continue;
                     ?>
     				<tr class="vertical-middle<? if($user->active == 0){ echo ' warning'; } ?>">
     					<td class="text-center">{{ $user->id }}</td>
