@@ -12,6 +12,7 @@ html {
 }
 
 body {
+    padding-bottom: 1px;
     margin: 0 0 269px; /* bottom = footer height */
 }
 
@@ -20,6 +21,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
+    min-width: 1020px;
 }
 
 mark {
