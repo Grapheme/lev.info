@@ -17,7 +17,7 @@
     $temp = array();
     $def_arr = array(
         'link' => mb_substr(action($module['class'] . '@getIndex'), 0, -6),
-        'title' => 'Все пользователи (' . User::count() . ')',
+        'title' => 'Все пользователи (' . (Allow::superuser() ? User::count() : User::where('group_id', '!=', 1)->count()) . ')',
     );
     $temp[] = $def_arr;
 
