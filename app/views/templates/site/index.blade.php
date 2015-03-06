@@ -35,7 +35,9 @@ if (isset($bills) && is_object($bills) && $bills->count() == 1) {
 #Helper::tad($bill);
 
 $photos = Dic::valuesBySlug('photo', function($query) {
-    $query->orderBy('created_at', 'DESC');
+    #$query->orderBy('created_at', 'DESC');
+    $query->filter_by_field('published_at', '<=', date('Y-m-d H:i:s'));
+    $query->order_by_field('published_at', 'DESC');
     $query->take(2);
 }, ['fields']);
 $photos = DicLib::loadImages($photos, 'image');
@@ -43,13 +45,17 @@ $photos = DicLib::loadGallery($photos, 'gallery');
 #Helper::tad($photos);
 
 $audios = Dic::valuesBySlug('audio', function($query) {
-    $query->orderBy('created_at', 'DESC');
+    #$query->orderBy('created_at', 'DESC');
+    $query->filter_by_field('published_at', '<=', date('Y-m-d H:i:s'));
+    $query->order_by_field('published_at', 'DESC');
     $query->take(1);
 }, ['textfields']);
 #Helper::tad($audios);
 
 $videos = Dic::valuesBySlug('video', function($query) {
-    $query->orderBy('created_at', 'DESC');
+    #$query->orderBy('created_at', 'DESC');
+    $query->filter_by_field('published_at', '<=', date('Y-m-d H:i:s'));
+    $query->order_by_field('published_at', 'DESC');
     $query->take(1);
 }, ['fields', 'textfields']);
 $videos = DicLib::loadImages($videos, 'image');
