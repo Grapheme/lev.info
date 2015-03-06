@@ -12,6 +12,7 @@ $options = Dic::valuesBySlugs('options', ['facebook_widget', 'twitter_widget'], 
 
 $photos = Dic::valuesBySlug('photo', function($query) use ($year, $mon) {
 
+    /*
     $query->where('created_at', '<=', date('Y-m-d H:i:s'));
     $query->orderBy('created_at', 'DESC');
 
@@ -19,7 +20,15 @@ $photos = Dic::valuesBySlug('photo', function($query) use ($year, $mon) {
         $query->where('created_at', '<=', $year . '-' . $mon . '-31 23:59:59');
         $query->where('created_at', '>', $year . '-' . $mon . '-01 00:00:00');
     }
-    #$query->take(10);
+    */
+
+    $query->filter_by_field(DB::raw("'published_at'"), '<=', date('Y-m-d'));
+    $query->order_by_field('published_at', 'DESC');
+
+    if ($year && $mon) {
+        $query->filter_by_field(DB::raw("'published_at'"), '<=', $year . '-' . $mon . '-31');
+        $query->filter_by_field(DB::raw("'published_at'"), '>', $year . '-' . $mon . '-01');
+    }
 
 }, ['fields', 'textfields'], true, true, false, 10);
 $photos = DicLib::loadImages($photos, 'image');
@@ -80,7 +89,7 @@ $next_link_time->addMonth();
                             @foreach ($photos as $photo)
                                 <li class="album-item photo-item"><a href="{{ URL::route('app.gallery', $photo->id) }}" style="background-image: url({{ is_object($photo->image) ? $photo->image->full() : '' }})" class="album-photo"></a>
                                     <div class="album-info">
-                                        <div class="info-date">{{ Helper::rdate('j M Y', $photo->created_at) }}</div>
+                                        <div class="info-date">{{ Helper::rdate('j M Y', $photo->published_at) }}</div>
                                         <div class="info-title"><a href="{{ URL::route('app.gallery', $photo->id) }}" class="title-link">{{ $photo->name }}</a></div>
                                         @if (isset($photo->gallery) && is_object($photo->gallery) && isset($photo->gallery->photos) && is_object($photo->gallery->photos) && $photo->gallery->photos->count())
                                             <div class="info-amount">{{ $photo->gallery->photos->count() }} фото</div>

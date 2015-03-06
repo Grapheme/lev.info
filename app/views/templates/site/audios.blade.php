@@ -12,12 +12,22 @@ $options = Dic::valuesBySlugs('options', ['facebook_widget', 'twitter_widget'], 
 
 $audios = Dic::valuesBySlug('audio', function($query) use ($year, $mon) {
 
+    /*
     $query->where('created_at', '<=', date('Y-m-d H:i:s'));
     $query->orderBy('created_at', 'DESC');
 
     if ($year && $mon) {
         $query->where('created_at', '<=', $year . '-' . $mon . '-31 23:59:59');
         $query->where('created_at', '>', $year . '-' . $mon . '-01 00:00:00');
+    }
+    */
+
+    $query->filter_by_field(DB::raw("'published_at'"), '<=', date('Y-m-d'));
+    $query->order_by_field('published_at', 'DESC');
+
+    if ($year && $mon) {
+        $query->filter_by_field(DB::raw("'published_at'"), '<=', $year . '-' . $mon . '-31');
+        $query->filter_by_field(DB::raw("'published_at'"), '>', $year . '-' . $mon . '-01');
     }
 
 }, ['fields', 'textfields'], true, true, false, 10);
@@ -76,7 +86,7 @@ $next_link_time->addMonth();
                     <ul class="main-feed">
                         @foreach ($audios as $audio)
                             <li class="feed-item js-audio-cont">
-                                <div class="feed-date">{{ Helper::rdate('j M Y', $audio->created_at) }}</div><a href="#" class="feed-title js-audio-open">{{ $audio->name }}</a>
+                                <div class="feed-date">{{ Helper::rdate('j M Y', $audio->published_at) }}</div><a href="#" class="feed-title js-audio-open">{{ $audio->name }}</a>
                                 <div class="audio-cont js-audio">{{ $audio->embed }}</div>
                             </li>
                         @endforeach

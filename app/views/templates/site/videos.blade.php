@@ -12,12 +12,22 @@ $options = Dic::valuesBySlugs('options', ['facebook_widget', 'twitter_widget'], 
 
 $videos = Dic::valuesBySlug('video', function($query) use ($year, $mon) {
 
+    /*
     $query->where('created_at', '<=', date('Y-m-d H:i:s'));
     $query->orderBy('created_at', 'DESC');
 
     if ($year && $mon) {
         $query->where('created_at', '<=', $year . '-' . $mon . '-31 23:59:59');
         $query->where('created_at', '>', $year . '-' . $mon . '-01 00:00:00');
+    }
+    */
+
+    $query->filter_by_field(DB::raw("'published_at'"), '<=', date('Y-m-d'));
+    $query->order_by_field('published_at', 'DESC');
+
+    if ($year && $mon) {
+        $query->filter_by_field(DB::raw("'published_at'"), '<=', $year . '-' . $mon . '-31');
+        $query->filter_by_field(DB::raw("'published_at'"), '>', $year . '-' . $mon . '-01');
     }
 
 }, ['fields', 'textfields'], true, true, false, 10);
@@ -82,7 +92,7 @@ $next_link_time->addMonth();
                                 ?>
                                 <li class="album-item video-item"><a href="{{ $embed_link }}" style="background-image: url({{ is_object($video->image) ? $video->image->full() : '' }})" class="js-fancybox album-photo fancybox.iframe"></a>
                                     <div class="album-info">
-                                        <div class="info-date">{{ Helper::rdate('j M Y', $video->created_at) }}</div>
+                                        <div class="info-date">{{ Helper::rdate('j M Y', $video->published_at) }}</div>
                                         <div class="info-title"><a href="{{ $embed_link }}" class="js-fancybox title-link fancybox.iframe">{{ $video->name }}</a></div>
                                     </div>
                                 </li>
