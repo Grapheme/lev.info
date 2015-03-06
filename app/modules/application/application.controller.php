@@ -31,6 +31,7 @@ class ApplicationController extends BaseController {
 
         $new = Dic::valueBySlugs('news', $slug, ['fields', 'textfields'], true, true, false, 2);
         $new = DicLib::loadImages($new, 'image');
+        $new = DicLib::loadGallery($new, 'gallery');
         #Helper::smartQueries(1);
         #Helper::tad($new);
 

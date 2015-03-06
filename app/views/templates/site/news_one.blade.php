@@ -41,6 +41,15 @@ $seo = $new->seo;
                         <div class="news-desc">{{ $new->preview }}</div>
                         <div class="news-text js-news-text">
                             {{ $new->content }}
+
+                            @if (isset($new->gallery) && is_object($new->gallery) && isset($new->gallery->photos) && is_object($new->gallery->photos) && $new->gallery->photos->count())
+                                <ul class="album-items">
+                                    @foreach ($new->gallery->photos as $photo)
+                                        <li class="album-li"><a rel="fancybox-thumb" href="{{ $photo->full() }}" style="background-image: url({{ $photo->full() }})" title="{{ $photo->title }}" class="album-one-photo js-fancybox"><img src="{{ $photo->thumb() }}" alt=""></a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
+
                         </div>
                     </div>
                     <div class="share-block">
