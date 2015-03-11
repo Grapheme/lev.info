@@ -56,24 +56,22 @@
           &:hover {
             color: #fbaf00;
           }
-        }
 
-        &.active {
-          a {
+          &.active {
             color: #fbaf00;
-          }
 
-          &:before {
-            content: "";
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            margin-left: -10px;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 10px 10px 10px;
-            border-color: transparent transparent #f7f7f7 transparent;
+            &:before {
+              content: "";
+              position: absolute;
+              bottom: -30px;
+              left: 50%;
+              margin-left: -10px;
+              width: 0;
+              height: 0;
+              border-style: solid;
+              border-width: 0 10px 10px 10px;
+              border-color: transparent transparent #f7f7f7 transparent;
+            }
           }
         }
       }
