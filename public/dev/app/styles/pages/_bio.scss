@@ -38,13 +38,13 @@
                 border-color: #212126;
             }
 
-            &.active {
-                font-weight: 600;
-            }
-
             a {
                 color: #212126;
                 text-decoration: none;
+
+                &.active {
+                    font-weight: 600;
+                }
             }
         }
     }
