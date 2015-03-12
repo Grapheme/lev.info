@@ -12,8 +12,8 @@ header.main-header
 				nav.main-nav
 					ul.nav-ul
 						each option in options
-							li.nav-item(class = title == option.name ? "active" : "")
-								a(href="#{option.url}.html") #{option.name}
+							li.nav-item
+								a(href="#{option.url}.html" class = title == option.name ? "active" : "") #{option.name}
 				.search-block
 					form(action="search.html")
 						.search-cont
