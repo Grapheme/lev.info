@@ -106,7 +106,8 @@ class import extends Command {
                     'image' => $image,
                 ];
 
-                $this->info(implode(' | ', $array));
+                #$this->info(implode(' | ', $array));
+                $this->info($array['id'] . ': ' . $array['published_at'] . ' - ' . $array['title']);
 
                 #die;
 
@@ -129,7 +130,7 @@ class import extends Command {
                     ],
                 ]);
 
-                break(2);
+                #break(2);
             }
 
             unset($model);

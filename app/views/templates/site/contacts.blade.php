@@ -38,7 +38,7 @@
                     </div>
                     <table class="form-table">
                       <tr>
-                        <td class="table-text">Представтесь</td>
+                        <td class="table-text">Представьтесь</td>
                         <td>
                           <input name="name" class="us-input">
                         </td>

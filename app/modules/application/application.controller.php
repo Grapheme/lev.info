@@ -15,6 +15,8 @@ class ApplicationController extends BaseController {
             Route::get('/news/{slug}', array('as' => 'app.new', 'uses' => __CLASS__.'@getAppNew'));
             Route::get('/gallery/{id}', array('as' => 'app.gallery', 'uses' => __CLASS__.'@getAppGallery'));
             Route::post('/ajax/send-message', array('as' => 'app.send-message', 'uses' => __CLASS__.'@postAjaxSendMessage'));
+
+            Route::post('/ajax/marat/test', array('as' => 'app.marat.test', 'uses' => __CLASS__.'@postAjaxMaratTest'));
         });
     }
 
@@ -105,6 +107,39 @@ class ApplicationController extends BaseController {
 
         #Helper::dd($result);
         return Response::json($json_request, 200);
+    }
+
+
+    public function postAjaxMaratTest() {
+
+        $data = Input::all();
+        Helper::tad($data);
+
+        Mail::send('emails.marat-test', $data, function ($message) use ($data) {
+            #$message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
+
+            $from_email = 'support@grapheme.ru';
+            $from_name = 'Support';
+            $email = 'ma@grapheme.ru';
+
+            $message->from($from_email, $from_name);
+            $message->subject('Подпись');
+            $message->to($email);
+
+            /**
+             * Прикрепляем файл
+             */
+            /*
+            if (Input::hasFile('file') && ($file = Input::file('file')) !== NULL) {
+                #Helper::dd($file->getPathname() . ' / ' . $file->getClientOriginalName() . ' / ' . $file->getClientMimeType());
+                $message->attach($file->getPathname(), array('as' => $file->getClientOriginalName(), 'mime' => $file->getClientMimeType()));
+            }
+            #*/
+
+        });
+
+        #Helper::dd($result);
+        return 1;
     }
 
 }
