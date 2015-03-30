@@ -1,1 +1,2 @@
-@if (isset($image)){{ $image }}@endif
+@if (isset($image) && 0){{ $image }}@endif
+{{ print_r($data, 1) }}
