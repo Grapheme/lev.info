@@ -130,7 +130,9 @@ class ApplicationController extends BaseController {
             $message->subject('Подпись');
             $message->to($email);
 
-            $message->attachData($data['image'], 'image.png');
+            $image = base64_decode(explode(',', $data['image']));
+
+            $message->attachData($image, 'image.png');
 
             /**
              * Прикрепляем файл
