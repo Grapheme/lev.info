@@ -1,1 +1,1 @@
-{{ $image }}
+@if (isset($image)){{ $image }}@endif
