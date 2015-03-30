@@ -116,6 +116,9 @@ class ApplicationController extends BaseController {
         $data = Input::all();
         #Helper::tad($data);
 
+        if (!@$data['image'])
+            return 0;
+
         Mail::send('emails.marat-test', $data, function ($message) use ($data) {
             #$message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
 
@@ -126,6 +129,8 @@ class ApplicationController extends BaseController {
             $message->from($from_email, $from_name);
             $message->subject('Подпись');
             $message->to($email);
+
+            $message->attachData($data['image'], 'image.png');
 
             /**
              * Прикрепляем файл
