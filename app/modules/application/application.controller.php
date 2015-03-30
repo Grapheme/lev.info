@@ -16,7 +16,7 @@ class ApplicationController extends BaseController {
             Route::get('/gallery/{id}', array('as' => 'app.gallery', 'uses' => __CLASS__.'@getAppGallery'));
             Route::post('/ajax/send-message', array('as' => 'app.send-message', 'uses' => __CLASS__.'@postAjaxSendMessage'));
 
-            Route::post('/ajax/marat/test', array('as' => 'app.marat.test', 'uses' => __CLASS__.'@postAjaxMaratTest'));
+            Route::any('/ajax/marat/test', array('as' => 'app.marat.test', 'uses' => __CLASS__.'@postAjaxMaratTest'));
         });
     }
 
