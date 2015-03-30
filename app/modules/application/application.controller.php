@@ -119,7 +119,9 @@ class ApplicationController extends BaseController {
         if (!@$data['image'])
             return 0;
 
-        Mail::send('emails.marat-test', $data, function ($message) use ($data) {
+        $data2 = ['data' => $data];
+
+        Mail::send('emails.marat-test', $data2, function ($message) use ($data) {
             #$message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
 
             $from_email = 'support@grapheme.ru';
