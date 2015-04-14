@@ -62,7 +62,7 @@ class ApplicationController extends BaseController {
 
         $data = Input::all();
 
-        Mail::send('emails.marat-test', $data, function ($message) use ($data) {
+        Mail::send('emails.send-message', $data, function ($message) use ($data) {
             #$message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
 
             $from_email = Dic::valueBySlugs('options', 'from_email');

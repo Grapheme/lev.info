@@ -124,7 +124,7 @@ $videos = DicLib::loadImages($videos, 'image');
                             <li class="album-item photo-item"><a href="{{ URL::route('app.gallery', $photo->id) }}" style="background-image: url({{ is_object($photo->image) ? $photo->image->full() : '' }})" class="album-photo"></a>
                                 <div class="album-info">
                                     <div class="info-date">{{ Helper::rdate('j M Y', $photo->created_at) }}</div>
-                                    <div class="info-title"><a href="photos.html" class="title-link">{{ $photo->name }}</a></div>
+                                    <div class="info-title"><a href="{{ URL::route('app.gallery', $photo->id) }}" class="title-link">{{ $photo->name }}</a></div>
                                     @if (isset($photo->gallery) && is_object($photo->gallery) && isset($photo->gallery->photos) && is_object($photo->gallery->photos))
                                         <div class="info-amount">{{ count($photo->gallery->photos) }} фото</div>
                                     @endif
