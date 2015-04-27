@@ -9,8 +9,9 @@
 #$twitter_widget = Dic::valueBySlugs('options', 'twitter_widget', ['textfields']);
 $options = Dic::valuesBySlugs('options', ['facebook_widget', 'twitter_widget'], ['textfields']);
 
-
-$slides = Dic::valuesBySlug('slider');
+$slides = Dic::valuesBySlug('slider', function($query) {
+    $query->orderBy('lft', 'ASC');
+});
 $slides = DicLib::loadImages($slides, 'image');
 #Helper::tad($slides);
 
