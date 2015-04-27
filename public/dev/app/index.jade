@@ -10,7 +10,7 @@ block content
                 .index-slider.js-slider
                     a(href="#").index-arrow.a-left.js-prev
                     a(href="#").index-arrow.a-right.js-next
-                    .js-fotorama
+                    .js-fotorama(data-autoplay="5000")
                         each i in [4,5,6]
                             .fororama-slide(style="background-image: url(images/tmp/indexslider_1.jpg)" data-caption="Николай Левичев подвел итоги 201#{i} года") &nbsp;
                                 a(href="news_one.html")
