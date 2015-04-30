@@ -146,7 +146,7 @@ $videos = DicLib::loadImages($videos, 'image');
                     <ul class="main-feed">
                         @foreach ($audios as $audio)
                             <li class="feed-item js-audio-cont js-audio-opened">
-                                <div class="feed-date">{{ Helper::rdate('j M Y', $audio->created_at) }}</div>
+                                <div class="feed-date">{{ Helper::rdate('j M Y', $audio->published_at) }}</div>
                                 <div class="feed-title js-audio-open">{{ $audio->name }}</div>
                                 <div class="audio-cont js-audio">{{ $audio->embed }}</div>
                             </li>
