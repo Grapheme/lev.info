@@ -50,7 +50,7 @@ $audios = Dic::valuesBySlug('audio', function($query) {
     $query->filter_by_field('published_at', '<=', date('Y-m-d H:i:s'));
     $query->order_by_field('published_at', 'DESC');
     $query->take(1);
-}, ['textfields']);
+}, ['fields', 'textfields']);
 #Helper::tad($audios);
 
 $videos = Dic::valuesBySlug('video', function($query) {
