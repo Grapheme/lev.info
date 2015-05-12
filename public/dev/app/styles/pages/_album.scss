@@ -72,4 +72,16 @@
             }
         }
     }
+
+    &.album-cont-news {
+        .album-items {
+            margin-bottom: 0;
+
+            .album-li {
+                .album-one-photo {
+                    width: 100%;
+                }
+            }
+        }
+    }
 }

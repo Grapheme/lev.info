@@ -225,23 +225,26 @@ levinfo.newsText = function() {
         if(this_alt) {
             var alt_str = '<div class="img-desc">' + this_alt + '</div>';
         }
-        var parent_p = $(this).parent('p');
+        var parent_p = $(this).parent();
         var toP;
-        if(parent_p.prev('p').length) {
-            toP = parent_p.prev('p');
-        } else if(parent_p.next('p').length) {
-            toP = parent_p.next('p');
+        if(parent_p.prev().length) {
+            toP = parent_p.prev();
+        } else if(parent_p.next().length) {
+            toP = parent_p.next();
         }
         var html = '<div class="news-img js-fancybox" rel="gallery" href="' + this_src + '" title="' + this_alt + '">\
                         <img class="img-photo" src="' + this_src + '" alt="' + this_alt + '">\
                         ' + alt_str + '\
                     </div>';
-        toP.prepend(html);
-        toP.append('<div class="clearfix"></div>');
-        var new_html = toP.html();
-        toP.after('<div>' + new_html + '</div>');
-        toP.remove();
-        parent_p.remove();
+        console.log(toP);
+        if(toP) {
+            toP.prepend(html);
+            toP.append('<div class="clearfix"></div>');
+            var new_html = toP.html();
+            toP.after('<div>' + new_html + '</div>');
+            toP.remove();
+            parent_p.remove();
+        }
     });
     //levinfo.fancybox();
 }
