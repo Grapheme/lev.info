@@ -128,7 +128,7 @@ $videos = DicLib::loadImages($videos, 'image');
                             @foreach ($photos as $photo)
                             <li class="album-item photo-item"><a href="{{ URL::route('app.gallery', $photo->id) }}" style="background-image: url({{ is_object($photo->image) ? $photo->image->full() : '' }})" class="album-photo"></a>
                                 <div class="album-info">
-                                    <div class="info-date">{{ Helper::rdate('j M Y', $photo->created_at) }}</div>
+                                    <div class="info-date">{{ Helper::rdate('j M Y', $photo->published_at) }}</div>
                                     <div class="info-title"><a href="{{ URL::route('app.gallery', $photo->id) }}" class="title-link">{{ $photo->name }}</a></div>
                                     @if (isset($photo->gallery) && is_object($photo->gallery) && isset($photo->gallery->photos) && is_object($photo->gallery->photos))
                                         <div class="info-amount">{{ count($photo->gallery->photos) }} фото</div>
@@ -167,7 +167,7 @@ $videos = DicLib::loadImages($videos, 'image');
                             ?>
                             <li class="album-item video-item"><a href="{{ $embed_link }}" style="background-image: url({{ is_object($video->image) ? $video->image->full() : '' }})" class="js-fancybox album-photo fancybox.iframe"></a>
                                 <div class="album-info">
-                                    <div class="info-date"><span>{{ Helper::rdate('j M Y', $video->created_at) }}</span></div>
+                                    <div class="info-date"><span>{{ Helper::rdate('j M Y', $video->published_at) }}</span></div>
                                     <div class="info-title"><a href="{{ $embed_link }}" class="js-fancybox title-link fancybox.iframe">{{ $video->name }}</a></div>
                                 </div>
                             </li>
